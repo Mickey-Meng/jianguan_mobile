@@ -1,0 +1,79 @@
+// 按需全局引入 vant组件
+import Vue from 'vue'
+import {
+  Button,
+  List,
+  Cell,
+  SwipeCell,
+  Step,
+  Steps,
+  Tabbar,
+  TabbarItem,
+  Image as VanImage,
+  ActionSheet,
+  Icon,
+  Form,
+  Field,
+  Dialog,
+  DropdownMenu,
+  DropdownItem,
+  Calendar,
+  Col,
+  Row,
+  ShareSheet,
+  CellGroup,
+  Divider,
+  Uploader,
+  Tab,
+  Tabs,
+  Switch,
+  Cascader,
+  Popup,
+  DatetimePicker,
+  Notify,
+  Badge,
+  RadioGroup,
+  Radio,
+  Popover,
+  Grid,
+  GridItem,
+  Search,
+  NavBar 
+} from 'vant'
+Vue.use(NavBar);
+Vue.use(Button)
+Vue.use(Cell)
+Vue.use(SwipeCell)
+Vue.use(Step)
+Vue.use(Steps)
+Vue.use(List)
+Vue.use(Tabbar).use(TabbarItem)
+Vue.use(VanImage)
+Vue.use(ActionSheet)
+Vue.use(Icon)
+Vue.use(Form)
+Vue.use(Field)
+Vue.use(Dialog)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
+Vue.use(Calendar)
+Vue.use(Col)
+Vue.use(Row)
+Vue.use(ShareSheet)
+Vue.use(CellGroup)
+Vue.use(Divider)
+Vue.use(Uploader)
+Vue.use(Tab)
+Vue.use(Tabs)
+Vue.use(Switch)
+Vue.use(Popup)
+Vue.use(DatetimePicker)
+Vue.use(Notify)
+Vue.use(Cascader)
+Vue.use(Badge)
+Vue.use(RadioGroup)
+Vue.use(Radio)
+Vue.use(Popover)
+Vue.use(Grid)
+Vue.use(GridItem)
+Vue.use(Search)

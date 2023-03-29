@@ -1,0 +1,152 @@
+@import './variables.scss';
+@import './mixin.scss';
+
+@font-face {
+  font-family: 'time';
+  src: url('./BW7iGeneralCondensed.otf');
+  font-weight: normal;
+  font-style: normal;
+  color: #fff;
+}
+
+html,
+body .app {
+  color: #333333;
+  font-family: Arial, Helvetica, 'STHeiti STXihei', 'Microsoft YaHei', Tohoma, sans-serif;
+  background-color: $background-color;
+}
+
+.common-bg {
+  background: linear-gradient(360deg, #ffffff 0%, #c5e0ff 100%);
+}
+
+.app-head {
+  height: 74px;
+  line-height: 74px;
+  background-color: transparent;
+  color: #000000;
+}
+
+.center-in-vertical {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%
+}
+
+.center-horizontal {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%
+}
+
+.center-both {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.common-card {
+  border-radius: 6px;
+  margin: 5px;
+  // background: #ffffff;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.common-list {
+  overflow-y: auto;
+  // background: #ffffff;
+  background-color: transparent;
+  overflow-y: auto;
+    .item {
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      border-bottom: #ebedf0 1px solid;
+      background-color: #fff;
+      border-radius: 3px;
+      position: relative;
+      .content {
+        // height: 26px;
+        line-height: 26px;
+        font-size: 14px;
+        .name {
+          width: 80px;
+          display: inline-block;
+          color: #969799;
+        }
+      }
+      .operate {
+        position: absolute;
+        right: 10px;
+        .button {
+          margin-right: 10px;
+        }
+        img {
+          width: 48px;
+        }
+      }
+    }
+    .last {
+      border: none !important;
+    }
+}
+
+.common-state-default {
+  color: #333333
+}
+
+.common-state-0 {
+  color: #1989fa
+}
+
+.common-state-1 {
+  color: #07c160
+}
+
+.common-state-2 {
+  color: #ee0a24
+}
+
+.common-title {
+  color: #00c587;
+  font-weight: bold;
+}
+
+.common-status-0 {
+  color: #909399
+}
+
+.common-status-1 {
+  color: #E6A23C
+}
+
+.common-status-2 {
+  color: #409EFF
+}
+
+.common-status-3 {
+  color: #67C23A
+}
+
+.common-status-4 {
+  color: #1989fa
+}
+
+.van-tabbar-item .van-info {
+  right: -20px !important;
+}
+
+.van-popup {
+  .van-badge--fixed {
+    position: absolute;
+    top: 14px;
+    right: 0;
+    -webkit-transform: translate(50%, -50%);
+    -ms-transform: translate(50%, -50%);
+    transform: translate(50%, -50%);
+    -webkit-transform-origin: 100%;
+    -ms-transform-origin: 100%;
+    transform-origin: 100%;
+  }
+}

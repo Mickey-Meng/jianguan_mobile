@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" href="<%= BASE_URL %>favicon.png">
+  <!-- <% for (var i in
+      htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.css) { %>
+      <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="preload" as="style" />
+      <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet" />
+	  <% } %> -->
+  <title><%= webpackConfig.name %></title>
+  <script type="text/javascript" src="./lib/mui.js"></script>
+  <script type="text/javascript" src="./lib/bdApi.js"></script>
+  <!-- <script type="text/javascript">
+    var ZLSK_JS_API_URL = './';
+  </script>
+  <script type="text/javascript" src="./lib/sfmUtil.js"></script>
+  <script>
+    SFM.fSfmMain = true;
+    SFM.sfmUtil.loadJquery();
+    SFM.sfmUtil.loadSfmBase();
+    SFM.sfmUtil.loadMath();
+    SFM.sfmUtil.loadProjHelper();
+    debugger
+    SFM.sfmUtil.loadCesium('1.66');
+  </script> -->
+  <script type="text/javascript" src="./zlsk_js_api/lib/base/jquery.js"></script>
+  <script type="text/javascript" src="./zlsk_js_api/lib/base/underscore.js"></script>
+  <script type="text/javascript" src="./zlsk_js_api/lib/base/base.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="./zlsk_js_api/lib/leaflet/leaflet-1.7.1/leaflet.css" />
+  <link rel="stylesheet" type="text/css" href="./zlsk_js_api/lib/zlskmap/zlskmap.css" />
+  <script type="text/javascript" src="./zlsk_js_api/lib/leaflet/leaflet-1.7.1/leaflet.js"></script>
+  <script type="text/javascript" src="./zlsk_js_api/lib/zlskmap/zlskmap.js"></script>
+  <link rel="stylesheet" type="text/css" href="./zlsk_js_api/lib/leaflet/plugins/cluster/MarkerCluster.Default.css" />
+  <link rel="stylesheet" type="text/css" href="./zlsk_js_api/lib/leaflet/plugins/cluster/MarkerCluster.css" />
+  <script type="text/javascript" src="./zlsk_js_api/lib/leaflet/plugins/cluster/leaflet.markercluster-src.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="./zlsk_js_api/lib/cesium/Cesium-1.66/Widgets/widgets.css" />
+  <script type="text/javascript" src="./zlsk_js_api/lib/cesium/Cesium-1.66/Cesium.js"></script>
+  <link rel="stylesheet" type="text/css" href="./zlsk_js_api/lib/zlskearth/zlskearth.css" />
+  <script type="text/javascript" src="./zlsk_js_api/lib/zlskearth/zlskearth.js"></script>
+  <script type="text/javascript" src="./zlsk_js_api/lib/zlskearth/zlskEarthHelper.js"></script>
+</head>
+
+<body style="overflow-y: hidden;">
+  <noscript>
+    <strong>We're sorry but <%= webpackConfig.name %> doesn't work properly without JavaScript enabled. Please enable it
+      to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- 使用CDN加速的JS文件，配置在vue.config.js下 -->
+  <!-- <% for (var i in
+      htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.js) { %>
+      <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+    <% } %> -->
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

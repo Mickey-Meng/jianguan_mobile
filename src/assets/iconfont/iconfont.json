@@ -1,0 +1,233 @@
+{
+  "id": "2630483",
+  "name": "bim",
+  "font_family": "iconfont",
+  "css_prefix_text": "iconfont-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4638879",
+      "name": "质量检查",
+      "font_class": "check",
+      "unicode": "e889",
+      "unicode_decimal": 59529
+    },
+    {
+      "icon_id": "13186634",
+      "name": "建设整改",
+      "font_class": "modify",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
+    },
+    {
+      "icon_id": "577364",
+      "name": "首页",
+      "font_class": "home",
+      "unicode": "e751",
+      "unicode_decimal": 59217
+    },
+    {
+      "icon_id": "993723",
+      "name": "审核",
+      "font_class": "processAudit",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "1301367",
+      "name": "记录",
+      "font_class": "record",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "3216075",
+      "name": "确认",
+      "font_class": "securityDealRecord",
+      "unicode": "e714",
+      "unicode_decimal": 59156
+    },
+    {
+      "icon_id": "4314609",
+      "name": "安全检查off",
+      "font_class": "securityReport",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "4314614",
+      "name": "安全整改off",
+      "font_class": "securityReportRecord",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "9839299",
+      "name": "数据填报",
+      "font_class": "processFilling",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "12331674",
+      "name": "确认",
+      "font_class": "verify",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "15714215",
+      "name": "电脑",
+      "font_class": "menu",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "18321645",
+      "name": "用户管理",
+      "font_class": "me",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "18655289",
+      "name": "设备报验",
+      "font_class": "produceRecord",
+      "unicode": "e6cc",
+      "unicode_decimal": 59084
+    },
+    {
+      "icon_id": "29232536",
+      "name": "安全记录安全卡-线",
+      "font_class": "securityRecord",
+      "unicode": "e819",
+      "unicode_decimal": 59417
+    },
+    {
+      "icon_id": "25536456",
+      "name": "方向向右-双",
+      "font_class": "arrow--copy",
+      "unicode": "e721",
+      "unicode_decimal": 59169
+    },
+    {
+      "icon_id": "25536458",
+      "name": "方向向右-双",
+      "font_class": "arrow--copy-copy",
+      "unicode": "e722",
+      "unicode_decimal": 59170
+    },
+    {
+      "icon_id": "7939951",
+      "name": "方向向右-双",
+      "font_class": "arrow-",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "625967",
+      "name": "32-向上箭头",
+      "font_class": "xiangshangjiantou",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "24599855",
+      "name": "32-向上箭头",
+      "font_class": "xiangshangjiantou-copy",
+      "unicode": "e71f",
+      "unicode_decimal": 59167
+    },
+    {
+      "icon_id": "24599861",
+      "name": "32-向上箭头",
+      "font_class": "xiangshangjiantou-copy1",
+      "unicode": "e720",
+      "unicode_decimal": 59168
+    },
+    {
+      "icon_id": "830289",
+      "name": "箭头-左",
+      "font_class": "jiantouzuo",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "3229039",
+      "name": "监控中心",
+      "font_class": "monitor",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "6679073",
+      "name": "项目概况_n@1x",
+      "font_class": "overview",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "13487836",
+      "name": "新闻",
+      "font_class": "news",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "17317954",
+      "name": "BIM",
+      "font_class": "bim",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "17413261",
+      "name": "待审核",
+      "font_class": "daishenhe",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "16268307",
+      "name": "已通过",
+      "font_class": "yitongguo",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "20439424",
+      "name": "已驳回",
+      "font_class": "yibohui",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "8980507",
+      "name": "安全",
+      "font_class": "security",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "17619266",
+      "name": "质量管理",
+      "font_class": "quality",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "17619275",
+      "name": "生产进度",
+      "font_class": "chedule",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "21557635",
+      "name": "数据 中心",
+      "font_class": "center",
+      "unicode": "e71e",
+      "unicode_decimal": 59166
+    }
+  ]
+}

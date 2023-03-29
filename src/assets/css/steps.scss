@@ -1,0 +1,14 @@
+/deep/ .van-steps {
+    .van-steps__items {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .van-step--process .van-step__line {
+      width: 0.02667rem;
+      background-color: #07c160;
+      top:25px
+    }
+    .van-step:first-child .van-step__line{
+        width:0
+    }
+  }
