@@ -34,14 +34,15 @@ export default {
       return this.curProject?.id !== 2
     },
     init() {
-      getProjectDetail().then(data => {
+      getProjectDetail({projectId: this.curProject.child[0].id}).then(data => {
         data.starttime && this.initDays(data.starttime)
       })
     },
     initDays(starttime) {
       const start = starttime.split(' ')[0]
       this.time = 0
-      this.time = this.isNotG235() ? 0 : diffDay(getCurrentDate(), start)
+      // this.time = this.isNotG235() ? 0 : diffDay(getCurrentDate(), start)
+      this.time = diffDay(getCurrentDate(), start)
     }
   }
 }

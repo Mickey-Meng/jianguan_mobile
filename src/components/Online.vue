@@ -96,9 +96,11 @@ export default {
       this.$router.push('/personMap')
     },
     isNotG235() {
-      return this.curProject?.id !== 2
+      // return this.curProject?.id !== 2
+      return false
     },
     initOnline() {
+      console.log(this.onlineYZCount)
       let that = this
       this.$store.dispatch('updateLocation')
       this.$store.dispatch('uploadOnlineState').then(isChange => {

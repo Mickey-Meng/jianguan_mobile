@@ -10,8 +10,9 @@ const iosAppId = {
 
 const constantField = {
   projectTypes: [
+    { name: '房建', value: 'LM' },
     { name: '桥梁', value: 'QL' },
-    { name: '道路', value: 'LM' },
+    // { name: '道路', value: 'LM' },
     { name: '隧道', value: 'SD' },
     { name: '其他', value: 'other' }
   ],

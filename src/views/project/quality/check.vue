@@ -58,10 +58,10 @@
             readonly
             clickable
             :value="editData.projectName"
-            label="项目"
-            placeholder="项目"
+            label="单位工程"
+            placeholder="单位工程"
             @click="showProject = true"
-            :rules="[{ required: true, message: '请选项目' }]"
+            :rules="[{ required: true, message: '请选单位工程' }]"
           />
           <Selecter
             readonly
@@ -270,7 +270,7 @@ export default {
     },
     requestChecker() {
       let that = this
-      getSafeCheck({ group: this.editData.gongquid,projectId: this.$store.state.currentBiaoDuan.id }).then(data => {
+      getSafeCheck({ group: this.editData.gongquid,projectId: this.$store.state.curProject.child[0].id }).then(data => {
         that.checkActions = data
         this.onSelectCheck(that.checkActions[0])
       })
