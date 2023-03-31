@@ -2,7 +2,7 @@ const api = {
   login: '/user/login',
   userinfo: '/user/userinfo',
   username: '/user/name',
-  getVideoToken: '/user/viewToken',
+  getVideoToken: '/user/viewToken/new',
   // getProjectList: '/projects/getProjects',
   getProjectList: '/projects/getAppProjectByUser', //通过用户查询所拥有的项目权限(目前只支持用户所拥有的工区权限查询, 分两级，同时查询项目以及标段)
 

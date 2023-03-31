@@ -1,8 +1,18 @@
 <template>
   <div class="app-container">
     <div class="condition">
-      <div class="span-container">
-        <span> {{ this.type }} </span>
+      <div class="" style="float: left;
+    margin-left: 0.26667rem;
+    width: 3.2rem;
+    background-color: #1989fa;
+    color: white;
+    position: relative;
+    border: 0.02667rem solid #1989fa;
+    border-radius: 0.13333rem;
+    height: 0.69333rem;
+    line-height: 0.69333rem;">
+        <!-- <span> {{ this.type }} </span> -->
+        进度总览
       </div>
     </div>
     <common-chart v-if="showChart" :options="options" className="echart"></common-chart>
@@ -10,7 +20,16 @@
       <span>无数据！</span>
     </div>
     <div class="condition">
-      <div class="span-container">
+      <div class="" style="float: left;
+    margin-left: 0.26667rem;
+    width: 3.2rem;
+    background-color: #1989fa;
+    color: white;
+    position: relative;
+    border: 0.02667rem solid #1989fa;
+    border-radius: 0.13333rem;
+    height: 0.69333rem;
+    line-height: 0.69333rem;">
         <span> 项目统计</span>
       </div>
       <div

@@ -4,8 +4,8 @@ let tdtUrl = 'https://t{s}.tianditu.gov.cn/'
 
 export const earthConfig = {
   init: {
-    lon: 120.1095329338229,
-    lat: 29.706018768457866,
+    lon: 117.48387645025284,
+    lat: 30.66751823064398,
     height: 5000,
     heading: 0,
     pitch: -90,
