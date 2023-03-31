@@ -54,7 +54,7 @@
 											class="have_scrolling">
 											<el-table-column type="index" width="50" align="center" label="序号">
 											</el-table-column>
-											<el-table-column prop="equipmentType" align="center" label="设备类型"
+											<el-table-column prop="equipmentTypeStr" align="center" label="设备类型"
 												show-overflow-tooltip>
 											</el-table-column>
 											<el-table-column prop="equipmentName" width="180px" align="center"
@@ -163,6 +163,7 @@
 			}
 		},
 		mounted() {
+    		this.getEquipmentEnterEnums();
 			this.getProjectInfoById();
 		},
 		methods: {
@@ -191,7 +192,7 @@
 					let data = res['data'] || {};
 					this.formData = data;
 					this.attachTable = data.attachment || [];
-					this.equipmentTable = data.equipmentInfo || [];
+					this.equipmentTable = this.formatEquType(data.equipmentInfo || [])
 				});
 				api.getFlowAndTaskInfo({businessKey: id}).then((res) => {
 					console.log(res.data);
@@ -204,6 +205,23 @@
 					}
 					this.updateTaskLog();
 				});
+			},
+			formatEquType(data) {
+				data = data || []
+				data.forEach((item) => {
+					this.equipmentOptions.forEach((obj) => {
+					if (item['equipmentType'].toString() == obj['value'].toString()) {
+						item['equipmentTypeStr'] = obj['label']
+					}
+					})
+				})
+				return data
+			},
+			getEquipmentEnterEnums() {
+				api.getEquipmentEnterEnums().then((res) => {
+					let options = res.data || []
+					this.equipmentOptions = convertOptions(options, 'desc', 'code')
+				})
 			},
 			updateTaskLog(){
 				setTimeout(()=>{
