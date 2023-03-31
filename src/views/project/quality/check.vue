@@ -170,7 +170,7 @@ import {
   getQualityTree,
   getSafeCheck,
   uploadQualityData,
-  getGongQu,
+  getGongQuNew,
   getGongQuProject,
   getDelayQualityEvent,
   doDelayQualityEvent
@@ -226,7 +226,7 @@ export default {
     this.editData.uploadid = userInfo.id
     this.editData.uploadname = userInfo.name
     this.requestFirst()
-    getGongQu().then(data => {
+    getGongQuNew(this.$store.state.curProject.child[0].id).then(data => {
       this.gongQuActions = data
       data && data.length !== 0 && this.onSelectGongqu(data[0])
     })

@@ -427,6 +427,13 @@ export function getGongQu(data) {
   })
 }
 
+export function getGongQuNew(projectId) {
+  return request({
+    url: api.getGongQu + `/${projectId}`,
+    method: 'get'
+  })
+}
+
 export function getGongQuProject(params) {
   return request({
     url: api.getGongQuProject,
