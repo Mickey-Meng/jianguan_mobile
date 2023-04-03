@@ -49,16 +49,33 @@
             <div>
               <div class="s-title">压实责任</div>
               <ul>
-                <li><span>建设单位:</span><span>{{data.builddpt}}</span></li>
                 <li>
-                  <span>代建+监理单位:</span
-                  ><span>{{data.supervisordpt}}</span>
+                  <span>建设单位:</span>
+<!--                  <span>池州乌沙港口运输有限公司</span>-->
+                  <span>{{data.builddpt}}</span>
                 </li>
                 <li>
-                  <span>中标联合体单位：</span
+                  <span>设计单位:</span
+                  ><span>{{data.desgindpt}}</span>
+                </li>
+
+                <li>
+                  <span>管理单位:</span
+                  ><span>{{data.managedpt}}</span>
+                </li>
+                <li>
+                  <span>施工单位：</span
                   ><span
-                    >{{data.constructdpt}}</span
-                  >
+                >{{data.constructdpt}}</span
+                >
+                </li>
+                <li>
+                  <span>监理单位：</span>
+                  <span>{{data.supervisordpt}}</span>
+                </li>
+                <li>
+                  <span>审计单位：</span>
+                  <span>{{data.auditUnit}}</span>
                 </li>
               </ul>
             </div>
