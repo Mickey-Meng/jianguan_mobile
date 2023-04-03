@@ -146,7 +146,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['currentProject']),
+    ...mapGetters(['currentProject', 'curProject']),
     scrollerHeight: function() {
       return window.innerHeight - 81 - 130 - 92 + 'px'
     }
@@ -157,7 +157,7 @@ export default {
   methods: {
     init() {
       let that = this
-      getTree({ type: this.projectType }).then(data => {
+      getTree({ type: this.projectType, projectId: this.curProject.child[0].id }).then(data => {
         if (data && data.child && data.child.length > 0) {
           that.gongquActions = data.child || []
           that.gongquActions.length > 0 && that.onGongQuSelect(that.gongquActions[0])
