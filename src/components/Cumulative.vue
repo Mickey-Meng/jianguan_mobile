@@ -146,6 +146,7 @@ export default {
         o = data[Object.keys(data)[0]]
         o.reverse()
         o.forEach(item => {
+          console.log(item.name)
           x.push(item.name)
         })
       }
@@ -327,7 +328,7 @@ export default {
               let num = finish || 0
               let to = total || 0
               totalNum.push(to)
-              x.push(projectname + '-' + projectcode)
+              x.push(projectname)
               m.data.push(num)
             })
           }
@@ -811,11 +812,12 @@ export default {
           data: this.yAxisCompRateData,
           axisLabel: {
             inside: false,
+            rotate: 60,
             interval: 0,
             textStyle: {
               color: '#000000',
               fontWeight: 'normal',
-              fontSize: '14'
+              fontSize: '14',
             }
           }
         },
