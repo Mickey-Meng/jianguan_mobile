@@ -160,7 +160,7 @@
             </van-radio-group>
           </template>
         </van-field>
-        <van-field label="通知全资">
+        <!-- <van-field label="通知全资">
           <template #input>
             <div class="people">
               <span v-for="item in QZ" :key="item.id">{{ item.name }}</span>
@@ -173,7 +173,7 @@
               <span v-for="item in JSDW" :key="item.id">{{ item.name }}</span>
             </div>
           </template>
-        </van-field>
+        </van-field> -->
         <div style="margin: 16px">
           <van-button round block type="info" native-type="submit">提交</van-button>
         </div>
