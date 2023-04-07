@@ -48,7 +48,7 @@
           <div class="card-content">
             <div>
               <div class="s-title">压实责任</div>
-              <ul>
+              <ul style="min-height:8rem!important;height:unset !important">
                 <li>
                   <span>建设单位:</span>
 <!--                  <span>池州乌沙港口运输有限公司</span>-->
