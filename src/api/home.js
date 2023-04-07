@@ -16,7 +16,7 @@ const constantField = {
     { name: '隧道', value: 'SD' },
     { name: '其他', value: 'other' }
   ],
-  wholeName: '项目全生命周期数字管理平台',
+  wholeName: '全生命周期智慧建设管理平台',
   name: name[process.env.VUE_APP_TYPE],
   iosAppId: iosAppId[process.env.VUE_APP_TYPE],
   versionInfo: {
