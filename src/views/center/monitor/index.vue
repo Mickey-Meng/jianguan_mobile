@@ -11,7 +11,7 @@
           >
             <div class="ez-vedio" :id="item.id"></div>
             <div class="content">
-              <div class="name" @click="fullScreen(item)">{{ item.name }}</div>
+              <div class="name" @click="fullScreen(item, index)">{{ item.name }}</div>
             </div>
           </div>
         </van-list>
@@ -59,6 +59,12 @@
         </van-list>
       </van-tab> -->
     </van-tabs>
+    <el-row style="position:fixed; bottom: 10px;left:10px;">
+      <el-button icon="el-icon-arrow-left" circle @touchstart.native="startCtrl(2)" @touchend.native="stopCtrl"></el-button>
+      <el-button icon="el-icon-arrow-right" circle @touchstart.native="startCtrl(3)" @touchend.native="stopCtrl"></el-button>
+      <el-button icon="el-icon-arrow-down" circle @touchstart.native="startCtrl(1)" @touchend.native="stopCtrl"></el-button>
+      <el-button icon="el-icon-arrow-up" circle @touchstart.native="startCtrl(0)" @touchend.native="stopCtrl"></el-button>
+    </el-row>
   </div>
 </template>
 <script>
@@ -75,6 +81,8 @@ export default {
       hls: null,
       refreshing: false,
       finished: false,
+      moveActive: false,
+      selectedVideo: 0,
       list: [
         {
       "id": 1,
@@ -316,7 +324,7 @@ export default {
     },
     {
       "id": 25,
-      "name": "池州生态人文纪念园项目 1号",
+      "name": "(球机)池州生态人文纪念园项目 1号",
       "type": 2,
       "url": "ezopen://open.ys7.com/L18119347/1.hd.live",
       "deviceNo": "L18119347",
@@ -326,7 +334,7 @@ export default {
     },
     {
       "id": 26,
-      "name": "池州生态人文纪念园项目 2号",
+      "name": "(球机)池州生态人文纪念园项目 2号",
       "type": 2,
       "url": "ezopen://open.ys7.com/L18119347/2.hd.live",
       "deviceNo": "L18119347",
@@ -336,7 +344,7 @@ export default {
     },
     {
       "id": 27,
-      "name": "池州港乌沙港区公用码头工程 1号",
+      "name": "(球机)池州港乌沙港区公用码头工程 1号",
       "type": 2,
       "url": "ezopen://open.ys7.com/L01047307/1.hd.live",
       "deviceNo": "L01047307",
@@ -346,7 +354,7 @@ export default {
     },
     {
       "id": 28,
-      "name": "池州港乌沙港区公用码头工程 2号",
+      "name": "(球机)池州港乌沙港区公用码头工程 2号",
       "type": 2,
       "url": "ezopen://open.ys7.com/L01047307/2.hd.live",
       "deviceNo": "L01047307",
@@ -356,7 +364,7 @@ export default {
     },
     {
       "id": 29,
-      "name": "池州港乌沙港区公用码头工程 3号",
+      "name": "(球机)池州港乌沙港区公用码头工程 3号",
       "type": 2,
       "url": "ezopen://open.ys7.com/L01047307/3.hd.live",
       "deviceNo": "L01047307",
@@ -366,7 +374,7 @@ export default {
     },
     {
       "id": 30,
-      "name": "池州港乌沙港区公用码头工程 4号",
+      "name": "(球机)池州港乌沙港区公用码头工程 4号",
       "type": 2,
       "url": "ezopen://open.ys7.com/L01047307/4.hd.live",
       "deviceNo": "L01047307",
@@ -376,7 +384,7 @@ export default {
     },
     {
       "id": 31,
-      "name": "池州港乌沙港区公用码头工程 5号",
+      "name": "(球机)池州港乌沙港区公用码头工程 5号",
       "type": 2,
       "url": "ezopen://open.ys7.com/L01047307/5.hd.live",
       "deviceNo": "L01047307",
@@ -412,11 +420,11 @@ export default {
       })
     },
     initVideo() {
-      this.list.forEach(item => {
-        this.initEzVideo(item)
+      this.list.forEach((item,index) => {
+        this.initEzVideo(item, index)
       })
     },
-    initEzVideo(item) {
+    initEzVideo(item, index) {
       if (item.player) {
         return
       }
@@ -427,12 +435,67 @@ export default {
         url,
         width: 320,
         height: 240,
-        autoplay: true,
-        footer: 'fullScreen'
+        autoplay: index == 0 ? true : false,
+        footer: 'fullScreen',
+        template: "standard" //
       })
     },
-    fullScreen(item) {
+    fullScreen(item, index) {
+
       item?.player?.fullScreen()
+      this.selectedVideo=index
+    },
+    startCtrl(direction) {
+      const playerInfo = this.list[this.selectedVideo];
+      
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+      var urlencoded = new URLSearchParams();
+      urlencoded.append("accessToken", this.videoToken);
+      urlencoded.append("deviceSerial", playerInfo.deviceNo);
+      urlencoded.append("channelNo", playerInfo.channelNo);
+      urlencoded.append("direction", direction);
+      urlencoded.append("speed", "1");
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
+
+      fetch("https://open.ys7.com/api/lapp/device/ptz/start", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+      
+      this.moveActive = true;
+    },
+    stopCtrl() {
+      const playerInfo = this.list[this.selectedVideo];
+      
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+      var urlencoded = new URLSearchParams();
+      urlencoded.append("accessToken", this.videoToken);
+      urlencoded.append("deviceSerial", playerInfo.deviceNo);
+      urlencoded.append("channelNo", playerInfo.channelNo);
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
+
+      fetch("https://open.ys7.com/api/lapp/device/ptz/stop", requestOptions)
+        .then(response => response.text())
+        .then(result => {this.moveActive = false;})
+        .catch(error => console.log('error', error));
+
+      
     }
   }
 }
