@@ -64,6 +64,10 @@ export default {
     ])
   },
   watch: {
+    // #102 修复项目没有默认问题
+    projectList: function() {
+      this.onSelect(this.projectList[0]);
+    },
     qualityEventCount: function() {
       this.calcTotalMessage()
     },
@@ -97,29 +101,7 @@ export default {
       show: false,
       showBD: false,
       showHomeIcon: false,
-      projectList: [
-        {
-          name: 'G235改建'
-        },
-        {
-          name: '项目2'
-        },
-        {
-          name: '项目3'
-        },
-        {
-          name: '项目4'
-        },
-        {
-          name: '项目5'
-        },
-        {
-          name: '项目6'
-        },
-        {
-          name: '项目7'
-        }
-      ],
+      projectList: [],
       // project: {
       //   name: 'G235改建'
       // }
