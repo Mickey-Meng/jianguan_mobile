@@ -425,6 +425,7 @@ export default {
       })
     },
     initEzVideo(item, index) {
+      const that = this;
       if (item.player) {
         return
       }
@@ -437,12 +438,19 @@ export default {
         height: 240,
         autoplay: index == 0 ? true : false,
         footer: 'fullScreen',
-        template: "standard" //
+        template: "standard", //
+        handleSuccess: function(){
+          that.list.forEach((_item,_index) => {
+            if (_item.player && _index != index) {
+              _item.player.stop()
+            }
+          })
+        }
       })
     },
     fullScreen(item, index) {
 
-      item?.player?.fullScreen()
+      item?.player?.stop()
       this.selectedVideo=index
     },
     startCtrl(direction) {
