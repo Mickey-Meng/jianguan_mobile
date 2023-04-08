@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
     <van-form :v-model="editData" class="common-card" :style="{ height: scrollerHeight }">
-      <van-cell title="安全检查信息" class="common-title" />
+      <van-cell title="质量检查信息" class="common-title" />
       <van-field readonly v-model="editData.gongquname" label="工区名称" />
       <van-field readonly v-model="editData.projectname" label="工程名称" />
       <van-field readonly v-model="editData.uploadtime" label="检查时间" />
