@@ -5,6 +5,8 @@
   "author": "Sunnie <sunniejs@163.com>",
   "private": true,
   "scripts": {
+    "show_node_version": "node -v",
+    "npm_install ": "npm install",
     "dev": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "stage": "vue-cli-service build --mode staging",
