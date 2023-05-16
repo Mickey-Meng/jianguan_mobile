@@ -1,5 +1,5 @@
 const api = {
-  login: '/user/login',
+  login: '/user/doLogin',
   userinfo: '/user/userinfo',
   username: '/user/name',
   getVideoToken: '/user/viewToken/new',

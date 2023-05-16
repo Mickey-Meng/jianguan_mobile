@@ -26,7 +26,7 @@ console.log('process.env.VUE_APP_TYPE: ' + process.env.VUE_APP_TYPE)
 
 let outputDir = `bim-${process.env.VUE_APP_TYPE}-${process.env.VUE_APP_ENV}`
 // let ip = 'http://101.200.223.171:8085'
-let ip = 'http://112.30.143.209:8888'
+let ip = 'http://150.158.139.18:25555'
 
 module.exports = {
   publicPath: './', // 署应用包时的基本 URL。 vue-router hash 模式使用
@@ -53,32 +53,11 @@ module.exports = {
           '^/baidu': ''
         }
       },
-      '/ZhuJiRoad/*': {
-        target: `${ip}/ZhuJiRoad`,
+      '/prod-api/*': {
+        target: `${ip}/prod-api`,
         changOrigin: true,
         pathRewrite: {
-          '^/ZhuJiRoad': ''
-        }
-      },
-      '/STSfmzj': {
-        target: `${ip}/STSfmzj`,
-        changOrigin: true,
-        pathRewrite: {
-          '^/STSfmzj': ''
-        }
-      },
-      '/ZhuJiApi': {
-        target: `${ip}/ZhuJiApi/`,
-        changOrigin: true,
-        pathRewrite: {
-          '^/ZhuJiApi': ''
-        }
-      },
-      '/data_zlsk/*': {
-        target: 'https://system.zlskkj.com:59031/data_zlsk/zhujishi',
-        changOrigin: true,
-        pathRewrite: {
-          '^/data_zlsk': ''
+          '^/prod-api': ''
         }
       }
     }
