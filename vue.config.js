@@ -23,28 +23,37 @@ const myConfig = {}
 // }
 process.env.VUE_APP_TYPE = myConfig['--type'] || 'project'
 console.log('process.env.VUE_APP_TYPE: ' + process.env.VUE_APP_TYPE)
-
+const port = process.env.port || process.env.npm_config_port || 9012// dev port
 let outputDir = `bim-${process.env.VUE_APP_TYPE}-${process.env.VUE_APP_ENV}`
 // let ip = 'http://101.200.223.171:8085'
-let ip = 'http://150.158.139.18:25555'
+// let ip = 'http://150.158.139.18:8088'
+// let ip = 'http://127.0.0.1:8088'
 
 module.exports = {
   publicPath: './', // 署应用包时的基本 URL。 vue-router hash 模式使用
-  //  publicPath: '/app/', //署应用包时的基本 URL。  vue-router history模式使用
+ // publicPath: '/app/', //署应用包时的基本 URL。  vue-router history模式使用
   outputDir: outputDir, //  生产环境构件文件的目录
   assetsDir: 'static', //  outputDir的静态资源(js、css、img、fonts)目录
   lintOnSave: !IS_PROD,
   productionSourceMap: false, // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构件。
   devServer: {
-    port: 9020, // 端口
-    open: false, // 启动后打开浏览器
+    host: '0.0.0.0',
+    port: port,
+    open: false,
     overlay: {
       //  当出现编译器错误或警告时，在浏览器中显示全屏覆盖层
       warnings: false,
       errors: true
     },
     proxy: {
-      //配置跨域
+      // detail: https://cli.vuejs.org/config/#devserver-proxy
+      [process.env.VUE_APP_BASE_API]: {
+        target: process.env.VUE_APP_SERVER_ADDRESS,
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      },
       '/baidu/*': {
         target: 'https://api.map.baidu.com',
         ws: true,
@@ -53,14 +62,8 @@ module.exports = {
           '^/baidu': ''
         }
       },
-      '/prod-api/*': {
-        target: `${ip}/prod-api`,
-        changOrigin: true,
-        pathRewrite: {
-          '^/prod-api': ''
-        }
-      }
-    }
+    },
+    disableHostCheck: true
   },
   css: {
     extract: IS_PROD, // 是否将组件中的 CSS 提取至一个独立的 CSS 文件中 (而不是动态注入到 JavaScript 中的 inline 代码)。

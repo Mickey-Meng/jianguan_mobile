@@ -61,7 +61,8 @@ const request = function(rParams) {
         let userinfoStr = localStorage.getItem('userinfo')
         if (userinfoStr) {
           let userinfo = JSON.parse(userinfoStr)
-          options.headers['token'] = userinfo.token
+          //options.headers['token'] = userinfo.token
+          options.headers['Authorization'] = 'Bearer ' + userinfo.token; // 让每个请求携带自定义token 请根据实际情况自行修改
         }
       }
 

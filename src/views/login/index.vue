@@ -5,16 +5,15 @@
       <div class="card">
         <div class="title">登录</div>
 
-        <van-form @submit="onSubmit" class="operate">
           <van-field
-            v-model="username"
+            v-model="loginForm.username"
             name="username"
             placeholder="用户名"
             :rules="[{ required: true, message: '请填写用户名' }]"
             size="large"
           />
           <van-field
-            v-model="pwd"
+            v-model="loginForm.password"
             :type="passwordType"
             name="password"
             placeholder="密码"
@@ -26,9 +25,13 @@
             </template>
           </van-field>
 
-          <van-button color="#007AFF" block type="info" native-type="submit">登录</van-button>
-        </van-form>
-      </div>
+          <el-button
+            type="primary"
+            style="width: 100%; margin-top: 26px;font-size: 18px; font-weight: 400;" @click="handleLogin"
+            >登录
+          </el-button
+      >
+        </div>
     </div>
   </div>
 </template>
@@ -42,8 +45,12 @@ export default {
   data() {
     return {
       constantField,
-      username: '',
-      pwd: '',
+      loginForm: {
+        username: "",
+        password: "",
+        code: "",
+        uuid: ""
+      },
       bottomTitle: constantField.wholeName + '-' + constantField.name,
       appUpdate,
       appType: process.env.VUE_APP_TYPE,
@@ -55,7 +62,40 @@ export default {
     this.appUpdate.update()
   },
   methods: {
-    onSubmit(values) {
+    handleLogin() {
+      console.log("登录...");
+      if (!this.loginForm.username){
+        return this.$toast.fail('请输入用户名');
+      }
+      if (!this.loginForm.password) {
+        return this.$toast.fail('请输入密码');
+      }
+      login({ username: this.loginForm.username, password: this.loginForm.password }).then(res => {
+        let userInfo = res.userInfo;
+        if (userInfo) {
+          if (!userInfo.deptId) {
+            this.$toast.fail("账户[" + loginData.username + "]未配置组织信息,请联系管理员");
+            return false;
+          }
+          localStorage.setItem('userinfo', JSON.stringify(userInfo));
+          this.$store.dispatch('uploadOnlineState').then(() => {
+            this.$store.dispatch('getRealtimeOnline');
+          })
+          if (overviewGroups.indexOf(userInfo.GROUPID) >= 0) {
+            // this.$store.state.overviewAuth = true
+            localStorage.setItem('overviewAuth', true);
+            this.$router.push({ path: '/projectOverview' });
+          } else {
+            // this.$store.state.overviewAuth = false
+            localStorage.setItem('overviewAuth', false);
+            this.$router.push({ path: '/' });
+          }
+        } else {
+          this.$toast.fail('登录失败');
+        }
+      })
+    },
+    onSubmit_old(values) {
       login(values).then(data => {
         if (data && data.groupid) {
           let groupid = data.groupid
@@ -139,6 +179,7 @@ export default {
     }
     .card {
       margin: 80px 40px 0px;
+      overflow:hidden;
       .title {
         text-align: initial;
         height: 35px;
