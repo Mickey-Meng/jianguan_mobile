@@ -5,7 +5,6 @@
       <div class="card">
         <div class="title">登录</div>
 
-        <van-form @submit="onSubmit" class="operate">
           <van-field
             v-model="loginForm.username"
             name="username"
@@ -26,9 +25,13 @@
             </template>
           </van-field>
 
-          <van-button color="#007AFF" block type="info" native-type="submit">登录</van-button>
-        </van-form>
-      </div>
+          <el-button
+            type="primary"
+            style="width: 100%; margin-top: 26px;font-size: 18px; font-weight: 400;" @click="handleLogin"
+            >登录
+          </el-button
+      >
+        </div>
     </div>
   </div>
 </template>
@@ -57,11 +60,17 @@ export default {
   },
   mounted() {
     this.appUpdate.update()
-    window.plus = {} /////////////////////正式发布到手机端时，应该去掉这句代码！！！！
   },
   methods: {
-    onSubmit(loginData) {
-      login(loginData).then(res => {
+    handleLogin() {
+      console.log("登录...");
+      if (!this.loginForm.username){
+        return this.$toast.fail('请输入用户名');
+      }
+      if (!this.loginForm.password) {
+        return this.$toast.fail('请输入密码');
+      }
+      login({ username: this.loginForm.username, password: this.loginForm.password }).then(res => {
         let userInfo = res.userInfo;
         if (userInfo) {
           if (!userInfo.deptId) {
@@ -170,6 +179,7 @@ export default {
     }
     .card {
       margin: 80px 40px 0px;
+      overflow:hidden;
       .title {
         text-align: initial;
         height: 35px;

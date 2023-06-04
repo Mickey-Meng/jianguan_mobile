@@ -27,7 +27,7 @@ const port = process.env.port || process.env.npm_config_port || 9012// dev port
 let outputDir = `bim-${process.env.VUE_APP_TYPE}-${process.env.VUE_APP_ENV}`
 // let ip = 'http://101.200.223.171:8085'
 // let ip = 'http://150.158.139.18:8088'
-// let ip = 'http://127.0.0.1:8088'
+ let ip = 'http://127.0.0.1:8088'
 
 module.exports = {
   publicPath: './', // 署应用包时的基本 URL。 vue-router hash 模式使用
@@ -37,7 +37,6 @@ module.exports = {
   lintOnSave: !IS_PROD,
   productionSourceMap: false, // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构件。
   devServer: {
-    host: '0.0.0.0',
     port: port,
     open: false,
     overlay: {
@@ -47,11 +46,11 @@ module.exports = {
     },
     proxy: {
       // detail: https://cli.vuejs.org/config/#devserver-proxy
-      [process.env.VUE_APP_BASE_API]: {
-        target: process.env.VUE_APP_SERVER_ADDRESS,
-        changeOrigin: true,
+      '/prod-api/*': {
+        target: `${ip}`,
+        changOrigin: true,
         pathRewrite: {
-          ['^' + process.env.VUE_APP_BASE_API]: ''
+          '^/prod-api': ''
         }
       },
       '/baidu/*': {
