@@ -106,7 +106,7 @@
 					deletedFlag: 1,
 					draftFlag: 1,
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2,
+					projectId: this.$store.getters.currentBiaoDuan.id || 2,
 					projectName: '',
 				},
 				attachTable: [], //附件

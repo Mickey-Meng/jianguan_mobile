@@ -147,14 +147,15 @@ const request = function(rParams) {
         }
         url += `?${temp.join('&')}`
       }
-
+      console.log("接口发出去的参数",url)
       let options = {
         url: STSfmzj + encodeURI(url),
         type: method.toUpperCase(),
         headers: { 'Content-Type': 'application/json' },
         success: function(response) {
           Toast.clear()
-          if (response.status === 200 || response.meow === 0) {
+          console.log("接口返回的数据",response)
+          if (response.status === 200 || response.code === 200 || response.meow === 0) {
             resolve(response.data)
           } else if (response.status === 300) {
             resolve(response.data || [])
@@ -177,6 +178,7 @@ const request = function(rParams) {
         if (userinfoStr) {
           let userinfo = JSON.parse(userinfoStr)
           options.headers['token'] = userinfo.token
+          options.headers['Authorization'] = 'Bearer ' + userinfo.token; // 让每个请求携带自定义token 请根据实际情况自行修改
         }
       }
 
@@ -193,6 +195,13 @@ const request = function(rParams) {
 export function getUserInfo(params) {
   return request({
     url: '/userauth/getUserInfo',
+    method: 'get',
+    params
+  })
+}
+export function getUserInfo_new(params) {
+  return request({
+    url: '/getInfo',
     method: 'get',
     params
   })

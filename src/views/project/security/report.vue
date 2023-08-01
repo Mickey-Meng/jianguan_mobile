@@ -225,8 +225,8 @@ export default {
 
   created() {
     let userInfo = JSON.parse(localStorage.getItem('userinfo'))
-    this.editData.uploadid = userInfo.id
-    this.editData.uploadname = userInfo.name
+    this.editData.uploadid = userInfo.userId
+    this.editData.uploadname = userInfo.nickName
     this.requestFirst()
     getGongQuNew(this.$store.state.curProject.child[0].id).then(data => {
       this.gongQuActions = data
@@ -255,7 +255,7 @@ export default {
       this.editData.gongquName = item.name
       this.editData.gongquid = item.sort
 
-      getGongQuProject({ id: item.sort }).then(data => {
+      getGongQuProject({ projectId: item.sort }).then(data => {
         this.projectActions = data
       })
 

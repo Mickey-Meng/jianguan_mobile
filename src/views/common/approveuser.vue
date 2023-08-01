@@ -108,7 +108,7 @@ export default {
         .getFlowAuditEntry({
           flowKey: this.flowKey,
           buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-          projectId: this.$store.getters.curProject.id || 2
+          projectId: this.$store.getters.currentBiaoDuan.parentid || 2
         })
         .then(res => {
           res = res.data || {}

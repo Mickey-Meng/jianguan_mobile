@@ -266,7 +266,7 @@ export default {
           projectcode: this.checkData.projectcode,
           produceid: this.component.produceid,
           produceidname: this.component.name,
-          updateusername: this.$store.state.userinfo.name
+          updateusername: this.$store.state.userinfo.nickName
         },
         ...values
       }

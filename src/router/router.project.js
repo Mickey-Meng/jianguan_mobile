@@ -655,6 +655,12 @@ export const constantRouterMap = [
     meta: { title: '人员变更' }
   },
   {
+    path: '/staffSubmit',
+    name: 'staffSubmit',
+    component: () => import('@/views/contractManagement/staffSubmit'),
+    meta: { title: '人员报审' }
+  },
+  {
     path: '/takeVacation',
     name: 'takeVacation',
     component: () => import('@/views/project/contract/takeVacation'),

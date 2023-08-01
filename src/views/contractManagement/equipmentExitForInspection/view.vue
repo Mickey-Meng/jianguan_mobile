@@ -54,7 +54,7 @@
 							</el-table-column>
 							<el-table-column prop="exitReason" width="120px" align="center" label="退场原因">
 							</el-table-column>
-							<el-table-column prop="techStatus" width="120px" align="center"
+							<el-table-column prop="techCondition" width="120px" align="center"
 								label="技术状态">
 							</el-table-column>
 						</el-table>
@@ -103,7 +103,7 @@
 					draftFlag: 1,
 					projectCode: '',
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2,
+					projectId: this.$store.getters.currentBiaoDuan.id || 2,
 					supervisionBan: ''
 				},
 				attachTable: [], //附件

@@ -140,7 +140,7 @@
 
 <script>
 import * as api from '@/api/quality'
-import { getUserInfo } from '@/api/userauth'
+import { getUserInfo, getUserInfo_new } from '@/api/userauth'
 import tasklog from '@/views/common/tasklog.vue'
 import taskhandle from '@/views/common/taskhandle'
 import attachlist from '@/views/common/attachlist'
@@ -172,7 +172,7 @@ export default {
         deletedFlag: 1,
         draftFlag: 1,
 		buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-		projectId: this.$store.getters.curProject.id || 2,
+		projectId: this.$store.getters.currentBiaoDuan.id || 2,
         startDate: formatDate(new Date())
       },
       attachTable: [], //附件
@@ -198,12 +198,12 @@ export default {
   mounted() {},
   methods: {
     getUserInfo(id) {
-      getUserInfo({
-		id: id,
-		type: 'app',
-		systemName: 'project', 
-					noToken: true}).then(res => {
-        this.baseInfo.startupUser = res.data.userInfo.NAME
+      getUserInfo_new({
+        id: id,
+        type: 'app',
+        systemName: 'project', 
+				noToken: false}).then(res => {
+          this.baseInfo.startupUser = res.data.user.nickName
       })
     },
     closeDialog() {

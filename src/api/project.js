@@ -35,9 +35,13 @@ const request = function(rParams) {
         url: baseApi + url,
         type: method.toUpperCase(),
         headers: { 'Content-Type': 'application/json' },
-        success: function(response) {
+        success: function (response) {
           Toast.clear()
-          if (response.status === 200 || response.meow === 0) {
+          if (response.code === 500 && rParams.url==='/user/doLogin') { 
+            Toast.fail(response.msg )
+            return false
+          }
+          if (response.status === 200 || response.code === 200 || response.meow === 0) {
             resolve(response.data)
           } else if (response.status === 201) {
             Toast.fail(response.message || '失败，请联系管理员！')
@@ -45,19 +49,19 @@ const request = function(rParams) {
             resolve(response.data || [])
             Toast.fail(response.message || '无数据！')
           } else {
-            Toast.fail(`${tempUrl}: ${response.message || '接口访问出错！'}`)
+            Toast.fail(`${baseApi + url}: ${response.message || '接口访问出错！'}`)
           }
         },
         error: function(xhr, type, errorThrown) {
           Toast.clear()
           // alert(options.url + (xhr.response || type || errorThrown))
-          Toast.fail(`${tempUrl}: 请检查您的网络，或联系管理员！`)
+          Toast.fail(`${baseApi + url}: 请检查您的网络，或联系管理员！`)
         }
       }
       if (data) {
         options.data = data
       }
-      if (!isUploadFile) {
+      if (!isUploadFile || true) {
         let userinfoStr = localStorage.getItem('userinfo')
         if (userinfoStr) {
           let userinfo = JSON.parse(userinfoStr)
@@ -563,6 +567,15 @@ export function getVideoToken(data) {
     data
   })
 }
+
+export const getMonitoring = projectId => {
+	return request({
+		url: api.getMonitoringByProjectId + "/" + projectId,
+		method: "get",
+		// data: {},
+		// params: {projectId}
+	});
+};
 
 export function updateOnline(params) {
   return request({

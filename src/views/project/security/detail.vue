@@ -3,7 +3,7 @@
     <van-form :v-model="editData" class="common-card" :style="{ height: scrollerHeight }">
       <van-cell title="安全检查信息" class="common-title" />
       <van-field readonly v-model="editData.gongquname" label="工区名称" />
-      <van-field readonly v-model="editData.projectname" label="工程名称" />
+      <van-field readonly v-model="editData.singleProjectName" label="工程名称" />
       <van-field readonly v-model="editData.uploadtime" label="检查时间" />
       <van-field readonly v-model="editData.safefirstname" label="问题大类" />
       <van-field readonly v-model="editData.safesecondname" label="问题小类" />
@@ -54,7 +54,7 @@ export default {
   mounted() {},
 
   created() {
-    this.editData = this.$route.params
+    this.editData = this.$route.params;
     if (this.editData.delayresult !== null) {
       this.editData.delayresult = ['申请中', '审核通过', '审核未通过'][this.editData.delayresult - 1]
     }

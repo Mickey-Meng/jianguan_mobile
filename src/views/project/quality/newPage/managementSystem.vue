@@ -160,7 +160,7 @@
 					totalPage:1,
 					pageSize: 10,
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2, // 项目id
+					projectId: this.$store.getters.currentBiaoDuan.id || 2, // 项目id
 				},
 				userInfo: {},
 				formData: {
@@ -172,7 +172,7 @@
 					projectName: '',// 项目名称
 					regimeContent: '', // 制度内容
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2, // 项目id
+					projectId: this.$store.getters.currentBiaoDuan.id || 2, // 项目id
 				    attachment: [ // 附件
 					]
 				},

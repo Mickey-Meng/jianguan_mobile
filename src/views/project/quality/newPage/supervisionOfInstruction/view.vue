@@ -163,7 +163,7 @@
 		formatDate,
 		getDaysBetween
 	} from "@/utils/format.js";
-	import { getUserInfo } from '@/api/userauth'
+	import { getUserInfo, getUserInfo_new } from '@/api/userauth'
 	import attachlist from "@/views/common/attachlist"
 	import projectinfo from "@/views/common/projectinfo.vue"
 	import locationmap from "@/views/common/locationmap.vue"
@@ -184,7 +184,7 @@
 					"otherAttachment": [],
 					"problemPhotoAttachment": [],
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2,
+					projectId: this.$store.getters.currentBiaoDuan.id || 2,
 					"projectPart": "",
 					"replyCode": "",
 					"replyContent": "",
@@ -216,8 +216,8 @@
 			getDetail(id) {
 				api.getSupervisionOrderDeatil(id).then((res) => {
 					let data = res['data'] || {};
-					getUserInfo({ id: data.createUserId, type: 'app', systemName: 'project',  noToken: true}).then(res1 => {
-						data.createUserName = res1.userInfo.NAME;
+					getUserInfo_new({ id: data.createUserId, type: 'app', systemName: 'project',  noToken: true}).then(res1 => {
+						data.createUserName = res1.data.user.nickName;
 						this.formData = data;
 					})
 				});

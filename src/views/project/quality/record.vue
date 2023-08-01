@@ -33,11 +33,11 @@
       >
         <div class="content">
           <span class="name">工区名称：</span>
-          <span class="value">{{ getGongQuName(item) }}</span>
+          <span class="value">{{ item.gongquname }}</span>
         </div>
         <div class="content">
-          <span class="name">工程名称：</span>
-          <span class="value">{{ getProjectName(item) }}</span>
+          <span class="name">单位工程：</span>
+          <span class="value">{{ item.singleProjectName }}</span>
         </div>
         <div class="content">
           <span class="name">检查大项：</span>
@@ -79,6 +79,7 @@
 </template>
 <script>
 import { getGongQuProject, getProject, getAllStatusQualityEvent } from '@/api/project.js'
+import { mapGetters } from 'vuex'
 export default {
   components: {},
   data() {
@@ -105,6 +106,9 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapGetters(['curProject'])
+  },
   mounted() {
     this.scrollerHeight = window.innerHeight - 100 - this.$refs['queryGroup'].offsetHeight + 'px'
     this.onStatusSelect(JSON.parse(JSON.stringify(this.statusActions[0])))
@@ -114,13 +118,14 @@ export default {
   },
   methods: {
     getAllGongQu() {
+      // 
       getGongQuProject().then(data => {
         this.gongQu = data
         this.getAllProject()
       })
     },
     getAllProject() {
-      getProject().then(data => {
+      getProject({projectId: this.curProject.child[0].id}).then(data => {
         let defaultItem = { name: '所有工程', projectid: null }
         let temps = [defaultItem]
         data.forEach(item => {

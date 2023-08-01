@@ -21,7 +21,7 @@
 						</div> -->
 						<div class="block">
 							<div class="block-name">施工单位：</div>
-							<div class="block-value">{{ item.buildUnits }}</div>
+							<div class="block-value">{{ item.constructdpts }}</div>
 						</div>
 						<div class="block">
 							<div class="block-name">监理办：</div>
@@ -29,7 +29,7 @@
 						</div>
 						<div class="block">
 							<div class="block-name">监理单位：</div>
-							<div class="block-value">{{ item.supervisorUnits }}</div>
+							<div class="block-value">{{ item.supervisordpts }}</div>
 						</div>
 						<div class="status">
 							{{ item.statusStr }}
@@ -81,7 +81,7 @@
 					totalPage: 1,
 					pageSize: 10,
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2,
+					projectId: this.$store.getters.currentBiaoDuan.id || 2,
 				},
 				editRow:null,
 				detailRow:null

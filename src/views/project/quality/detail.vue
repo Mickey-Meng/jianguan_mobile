@@ -3,7 +3,7 @@
     <van-form :v-model="editData" class="common-card" :style="{ height: scrollerHeight }">
       <van-cell title="质量检查信息" class="common-title" />
       <van-field readonly v-model="editData.gongquname" label="工区名称" />
-      <van-field readonly v-model="editData.projectname" label="工程名称" />
+      <van-field readonly v-model="editData.singleProjectName" label="工程名称" />
       <van-field readonly v-model="editData.uploadtime" label="检查时间" />
       <van-field readonly v-model="editData.qualityfirstname" label="质量大类" />
       <van-field readonly v-model="editData.qualitysecondname" label="质量小类" />
@@ -55,6 +55,7 @@ export default {
 
   created() {
     this.editData = this.$route.params
+    this.editData.projectname = this.editData.projectname ? this.editData.projectname : this.editData.singleProjectName;
     if (this.editData.delayresult !== null) {
       this.editData.delayresult = ['申请中', '审核通过', '审核未通过'][this.editData.delayresult - 1]
     }

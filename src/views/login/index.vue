@@ -4,8 +4,19 @@
       <div class="title">{{ constantField.wholeName }}</div>
       <div class="card">
         <div class="title">登录</div>
-
-        <van-form @submit="onSubmit" class="operate">
+        <div class="login-form">
+          <div class="login-form-field">
+            <input v-model="loginForm.username" placeholder="用户名" type="text" />
+          </div>
+          <div class="login-form-field">
+            <input v-model="loginForm.password" placeholder="密码" :type="passwordType" />
+            <div class="login-password-icon">
+              <van-switch v-model="showPwd" @change="switchPasswordType" />
+            </div>
+          </div>
+          <van-button color="#007AFF" block type="info" @click="onSubmit">登录</van-button>
+        </div>
+        <!-- <van-form @submit="onSubmit" class="operate">
           <van-field
             v-model="loginForm.username"
             name="username"
@@ -27,7 +38,7 @@
           </van-field>
 
           <van-button color="#007AFF" block type="info" native-type="submit">登录</van-button>
-        </van-form>
+        </van-form> -->
       </div>
     </div>
   </div>
@@ -43,10 +54,10 @@ export default {
     return {
       constantField,
       loginForm: {
-        username: "",
-        password: "",
-        code: "",
-        uuid: ""
+        username: '',
+        password: '',
+        code: '',
+        uuid: ''
       },
       bottomTitle: constantField.wholeName + '-' + constantField.name,
       appUpdate,
@@ -57,32 +68,56 @@ export default {
   },
   mounted() {
     this.appUpdate.update()
-    window.plus = {} /////////////////////正式发布到手机端时，应该去掉这句代码！！！！
+    /////////////////////正式发布到手机端时，应该去掉这部分代码！！！！
+    window.plus = {}
+    window.plus.os = {}
+    window.plus.os.name = ''
+    window.plus.push = {}
+    window.plus.push.getClientInfo = function() {
+      return { clientid: 1 }
+    }
+    window.plus.geolocation = {}
+    window.plus.geolocation.getCurrentPosition = function() {}
+    /////////////////////正式发布到手机端时，应该去掉这部分代码！！！！
   },
   methods: {
     onSubmit(loginData) {
+      if (!this.loginForm.username) {
+        this.$toast.fail('请输入用户名！')
+        return false
+      }
+      if (!this.loginForm.password) {
+        this.$toast.fail('请输入密码！')
+        return false
+      }
+      loginData.sourceType = 2
+      const { username, password } = this.loginForm
+      loginData.username = username
+      loginData.password = password
       login(loginData).then(res => {
-        let userInfo = res.userInfo;
+        let userInfo = res.userInfo
         if (userInfo) {
           if (!userInfo.deptId) {
-            this.$toast.fail("账户[" + loginData.username + "]未配置组织信息,请联系管理员");
-            return false;
+            this.$toast.fail('账户[' + loginData.username + ']未配置组织信息,请联系管理员')
+            return false
           }
-          localStorage.setItem('userinfo', JSON.stringify(userInfo));
+          userInfo.menus = res.menus
+          this.$store.state.userinfo = userInfo
+          localStorage.setItem('userinfo', JSON.stringify(userInfo))
           this.$store.dispatch('uploadOnlineState').then(() => {
-            this.$store.dispatch('getRealtimeOnline');
+            this.$store.dispatch('getRealtimeOnline')
           })
           if (overviewGroups.indexOf(userInfo.GROUPID) >= 0) {
             // this.$store.state.overviewAuth = true
-            localStorage.setItem('overviewAuth', true);
-            this.$router.push({ path: '/projectOverview' });
+            localStorage.setItem('overviewAuth', true)
+            this.$router.push({ path: '/projectOverview' })
           } else {
             // this.$store.state.overviewAuth = false
-            localStorage.setItem('overviewAuth', false);
-            this.$router.push({ path: '/' });
+            localStorage.setItem('overviewAuth', false)
+            this.$router.push({ path: '/' })
           }
         } else {
-          this.$toast.fail('登录失败');
+          this.$toast.fail('登录失败')
         }
       })
     },
@@ -145,6 +180,33 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.login-form-field {
+  margin-top: 20px;
+  position: relative;
+}
+.login-password-icon {
+  position: absolute;
+  right: 10px;
+  top: 0.2rem;
+}
+.login-form-field input {
+  font-size: 0.4rem;
+  width: 100%;
+  height: 1.2rem;
+  background-color: #fff;
+  border: 0;
+  resize: none;
+  line-height: inherit;
+  text-align: left;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0.1rem;
+  -webkit-text-fill-color: currentColor;
+  border-radius: 5px;
+}
 .login-container {
   position: absolute;
   top: 0;

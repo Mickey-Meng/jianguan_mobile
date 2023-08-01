@@ -33,11 +33,11 @@
       >
         <div class="content">
           <span class="name">工区名称：</span>
-          <span class="value">{{ getGongQuName(item) }}</span>
+          <span class="value">{{ item.gongquname }}</span>
         </div>
         <div class="content">
           <span class="name">工程名称：</span>
-          <span class="value">{{ getProjectName(item) }}</span>
+          <span class="value">{{ item.singleProjectName }}</span>
         </div>
         <div class="content">
           <span class="name">检查大项：</span>
@@ -79,6 +79,7 @@
 </template>
 <script>
 import { getGongQuProject, getProject, getAllStatusSafeEvent } from '@/api/project.js'
+import { mapGetters } from 'vuex'
 export default {
   components: {},
   data() {
@@ -105,6 +106,9 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapGetters(['curProject'])
+  },
   mounted() {
     this.scrollerHeight = window.innerHeight - 100 - this.$refs['queryGroup'].offsetHeight + 'px'
     this.onStatusSelect(JSON.parse(JSON.stringify(this.statusActions[0])))
@@ -114,13 +118,13 @@ export default {
   },
   methods: {
     getAllGongQu() {
-      getGongQuProject().then(data => {
+      getGongQuProject({ projectId: this.curProject.child[0].id }).then(data => {
         this.gongQu = data
         this.getAllProject()
       })
     },
     getAllProject() {
-      getProject().then(data => {
+      getProject({ projectId: this.curProject.child[0].id }).then(data => {
         let defaultItem = { name: '所有工程', projectid: null }
         let temps = [defaultItem]
         data.forEach(item => {
@@ -164,7 +168,7 @@ export default {
         if (item.status === 1) {
           _item.status == 2 && temp.push(_item)
         } else if (item.status === 2) {
-          (_item.status == 0 || _item.status == 1) && temp.push(_item)
+          ;(_item.status == 0 || _item.status == 1) && temp.push(_item)
         } else if (item.status === 3) {
           _item.status == 3 && temp.push(_item)
         }
@@ -191,7 +195,7 @@ export default {
       })
     },
     itemClick(item) {
-      let temp = { ...item, ...{ projectname: this.getProjectName(item), gongquname: this.getGongQuName(item) } }
+      let temp = { ...item, ...{ projectname: this.getProjectName(item) } }
       this.$router.push({
         name: 'securityDetail',
         params: temp

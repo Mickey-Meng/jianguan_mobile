@@ -102,7 +102,8 @@ export default {
   methods: {
     async init() {
       await this.$store.dispatch('getRealtimeMessage')
-      let menus = this.$store.state.userinfo.userAuth.menuCookie
+      // let menus = this.$store.state.userinfo.userAuth.menuCookie
+      let menus = this.$store.state.userinfo.menus
       let messageMap = {
         processAudit: this.processFillingCount,
         check: this.delayQualityEventCount,
@@ -118,16 +119,17 @@ export default {
       menus.forEach(menu => {
         if (menu?.children?.length > 0) {
           let authMenuItem = {
-            title: menu.NAME,
+            title: menu.meta.title, // menu.NAME,
             sub: []
           }
-          menu.children.forEach(child => {
+          menu.children && menu.children.forEach(child => {
             let sub = {
-              name: child.NAME,
-              path: child.URL,
-              icon: require(`@/assets/image/menu/${child.ICON}.png`)
+              name: child.meta.title,
+              path: child.path,
+              // icon: require(`@/assets/image/menu/${child.ICON}.png`)
+              icon: require(`@/assets/image/menu/overview.png`)
             }
-            messageMap[child.MENUCODE] && (sub.message = messageMap[child.MENUCODE])
+            messageMap[child.path] && (sub.message = messageMap[child.path])
             authMenuItem.sub.push(sub)
           })
           authMenus.push(authMenuItem)

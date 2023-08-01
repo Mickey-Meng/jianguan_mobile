@@ -2,7 +2,7 @@
 	<div>
 		<el-dialog class="full-dialog defined-dialog" :visible.sync="dialogFormVisible" :fullscreen="true">
 			<template slot="title">
-				{{dialogTitle}}
+				{{ dialogTitle }}
 				<div class="logo-icon"></div>
 			</template>
 			<el-container>
@@ -14,8 +14,8 @@
 								<div class="form-title">
 									<div class="title-big-bar"></div>
 									<strong>质量检测</strong>
-									<drafthandle v-if="addOrModifyFlag" @addOrModify="addOrModify"
-										@checkDraft="checkDraft" ref="drafthandle"></drafthandle>
+									<drafthandle v-if="addOrModifyFlag" @addOrModify="addOrModify" @checkDraft="checkDraft"
+										ref="drafthandle"></drafthandle>
 								</div>
 
 								<div class="form-block">
@@ -55,33 +55,26 @@
 										<el-button size="small" @click="addExamine" type="primary">新增</el-button>
 									</div>
 									<div class="block-table">
-										<el-table :data="examineTable" style="width: 100%" border
-											class="have_scrolling">
+										<el-table :data="examineTable" style="width: 100%" border class="have_scrolling">
 											<el-table-column type="index" width="50" align="center" label="序号">
 											</el-table-column>
-											<el-table-column prop="name" align="center" label="材料名称"
-												show-overflow-tooltip>
+											<el-table-column prop="name" align="center" label="材料名称" show-overflow-tooltip>
 											</el-table-column>
-											<el-table-column prop="addressStr" width="180px" align="center"
-												label="材料来源">
+											<el-table-column prop="addressStr" width="180px" align="center" label="材料来源">
 											</el-table-column>
-											<el-table-column prop="specification" width="120px" align="center"
-												label="材料规格">
+											<el-table-column prop="specification" width="120px" align="center" label="材料规格">
 											</el-table-column>
-											<el-table-column prop="projectPart" width="120px" align="center"
-												label="工程部位">
+											<el-table-column prop="projectPart" width="120px" align="center" label="工程部位">
 											</el-table-column>
 											<el-table-column prop="num" width="120px" align="center" label="材料数量(吨)">
 											</el-table-column>
-											<el-table-column prop="takeAddress" width="120px" align="center"
-												label="取样地点">
+											<el-table-column prop="takeAddress" width="120px" align="center" label="取样地点">
 											</el-table-column>
 											<el-table-column prop="testDate" width="120px" align="center" label="试验日期">
 											</el-table-column>
 											<el-table-column prop="testNum" width="120px" align="center" label="实验数量">
 											</el-table-column>
-											<el-table-column prop="qualifiedNum" width="120px" align="center"
-												label="合格数量">
+											<el-table-column prop="qualifiedNum" width="120px" align="center" label="合格数量">
 											</el-table-column>
 											<el-table-column prop="qualifiedRate" width="120px" align="center"
 												label="总合格率(%)">
@@ -89,12 +82,11 @@
 											<el-table-column prop="detectionResult" width="120px" align="center"
 												label="检测结果">
 												<template slot-scope="scope">
-													<template v-if="scope.row.detectionResult==0">合格</template>
-													<template v-else-if="scope.row.detectionResult==1">不合格</template>
+													<template v-if="scope.row.detectionResult == 0">合格</template>
+													<template v-else-if="scope.row.detectionResult == 1">不合格</template>
 												</template>
 											</el-table-column>
-											<el-table-column prop="reportCode" width="120px" align="center"
-												label="报告编号">
+											<el-table-column prop="reportCode" width="120px" align="center" label="报告编号">
 											</el-table-column>
 											<el-table-column fixed="right" width="120" align="center" label="操作">
 												<template slot-scope="{ row, $index }">
@@ -268,8 +260,8 @@
 							<div class="block-item-label">检测结果</div>
 							<div class="block-item-value">
 								<el-select v-model="examineInfo.detectionResult" placeholder="请选择">
-									<el-option v-for="item in examineResultOptions1" :key="item.value"
-										:label="item.label" :value="item.value">
+									<el-option v-for="item in examineResultOptions1" :key="item.value" :label="item.label"
+										:value="item.value">
 									</el-option>
 								</el-select>
 							</div>
@@ -329,51 +321,188 @@
 </template>
 
 <script>
-	import * as api from "@/api/quality";
-	import {
-		getUserInfo
-	} from "@/api/user";
-	import {
-		convertOptions,
-		formatDate,
-		formatDateTime,
-		diffCompare
-	} from "@/utils/format.js";
+import * as api from "@/api/quality";
+import {
+	getUserInfo
+} from "@/api/user";
+import {
+	convertOptions,
+	formatDate,
+	formatDateTime,
+	diffCompare
+} from "@/utils/format.js";
 
-	import upload from "../../../common/upload.vue"
-	import attachlist from "../../../common/attachlist.vue"
-	import drafthandle from "../../../common/drafthandle.vue"
-	import approveuser from "../../../common/approveuser.vue"
-	import projectinfo from "../../../common/projectinfo.vue"
-	
-	export default {
-		data() {
-			return {
-				draftVisible: false,
-				addOrModifyFlag: true,
-				dialogFormVisible: false,
-				childOptions: [],
-				examineResultOptions1: [{
-					label: '合格',
-					value: 0
-				}, {
-					label: '不合格',
-					value: 1
+import upload from "../../../common/upload.vue"
+import attachlist from "../../../common/attachlist.vue"
+import drafthandle from "../../../common/drafthandle.vue"
+import approveuser from "../../../common/approveuser.vue"
+import projectinfo from "../../../common/projectinfo.vue"
+
+export default {
+	data() {
+		return {
+			draftVisible: false,
+			addOrModifyFlag: true,
+			dialogFormVisible: false,
+			childOptions: [],
+			examineResultOptions1: [{
+				label: '合格',
+				value: 0
+			}, {
+				label: '不合格',
+				value: 1
+			}],
+			dialogTitle: '项目全生命周期数字管理平台',
+			annexTableData: [],
+			activeName: 'first',
+			waitTableData: [],
+			options: [],
+			baseInfo: {
+				buildSection: 1,
+				buildSectionName: '',
+				contractCode: '',
+				buildCompany: '',
+				supervisionUnit: '',
+				supervisionSection: ''
+			},
+			formData: { //表单参数
+				deletedFlag: 1,
+				detectionInfo: [],
+				detectionReport: [],
+				factoryInfo: [],
+				otherAttachment: [],
+				draftFlag: 1,
+				fillDate: formatDate(new Date()),
+				inspectionCode: '',
+				buildSection: this.$store.getters.project.id,
+				projectId: this.$store.getters.project['parentid'],
+				remark: '',
+			},
+			rules: {
+				inspectionCode: [{
+					required: true,
+					message: '请填写报验单号',
+					trigger: 'blur'
 				}],
-				dialogTitle: '项目全生命周期数字管理平台',
-				annexTableData: [],
-				activeName: 'first',
-				waitTableData: [],
-				options: [],
-				baseInfo: {
-					buildSection: 1,
-					buildSectionName: '',
-					contractCode: '',
-					buildCompany: '',
-					supervisionUnit: '',
-					supervisionSection: ''
+				fillDate: [{
+					required: true,
+					message: '请选择填报日期',
+					trigger: 'blur'
+				}]
+			},
+			newrules: {
+				name: [{
+					required: true,
+					message: '请填写材料名称',
+					trigger: 'blur'
+				}],
+				num: [{
+					required: true,
+					message: '请填写材料数量',
+					trigger: 'blur'
+				}, {
+					type: 'number',
+					message: '材料数量必须为数字'
+				}],
+				testNum: [{
+					required: true,
+					message: '请填写实验数量',
+					trigger: 'blur'
 				},
-				formData: { //表单参数
+				{
+					type: 'number',
+					message: '实验数量必须为数字'
+				}
+				],
+				qualifiedNum: [{
+					required: true,
+					message: '请填写合格数量',
+					trigger: 'blur'
+				},
+				{
+					type: 'number',
+					message: '合格数量必须为数字'
+				}
+				],
+				qualifiedRate: [{
+					required: true,
+					message: '请填写总合格率',
+					trigger: 'blur'
+				},
+				{
+					type: 'number',
+					message: '合格率必须为数字'
+				}
+				]
+			},
+			examineVisible: false, //检测信息弹窗是否显示
+			areaVisible: false,
+			examineInfo: { //检测信息弹窗信息
+				address: null,
+				addressStr: '',
+				detectionResult: 1,
+				name: '',
+				num: null,
+				projectPart: '',
+				qualifiedNum: null,
+				qualifiedRate: null,
+				reportCode: '',
+				specification: '',
+				takeAddress: '',
+				testDate: formatDate(new Date()),
+				testNum: null
+			},
+			examineTable: [], //检测信息
+			reportTable: [], //试验检测报告
+			factoryTable: [], //出厂信息
+			attachTable: [], //其他附件
+			materialOptions: [],
+			provinceOptions: [],
+			cityOptions: [],
+			countyOptions: [],
+			addressItem: {
+				city: "",
+				cityId: undefined,
+				district: "",
+				districtId: undefined,
+				provice: "",
+				proviceId: undefined
+			},
+			flowNodesUsersData: [],
+			auditUser: {},
+			flowKey: 'zhiliangjiance'
+		};
+	},
+	created() { },
+	components: {
+		upload,
+		attachlist,
+		drafthandle,
+		approveuser,
+		projectinfo,
+		qualityTest: () => import("../qualityTest.vue")
+	},
+	computed: {
+
+	},
+	watch: {
+
+	},
+	mounted() {
+		this.getChildProject();
+		this.getMaterialEnums();
+		this.getProvince();
+	},
+	methods: {
+
+		changeVisible(obj, value) {
+			this.dialogFormVisible = value;
+			obj = obj || {};
+			this.addOrModifyFlag = obj['id'] ? false : true;
+			if (obj['id']) {
+				this.getDetail(obj['id']);
+			} else {
+				this.formData = {
 					deletedFlag: 1,
 					detectionInfo: [],
 					detectionReport: [],
@@ -383,352 +512,215 @@
 					fillDate: formatDate(new Date()),
 					inspectionCode: '',
 					buildSection: this.$store.getters.project.id,
-					projectId:this.$store.getters.project['parentid'],
+					projectId: this.$store.getters.project['parentid'],
 					remark: '',
-				},
-				rules: {
-					inspectionCode: [{
-						required: true,
-						message: '请填写报验单号',
-						trigger: 'blur'
-					}],
-					fillDate: [{
-						required: true,
-						message: '请选择填报日期',
-						trigger: 'blur'
-					}]
-				},
-				newrules: {
-					name: [{
-						required: true,
-						message: '请填写材料名称',
-						trigger: 'blur'
-					}],
-					num: [{
-						required: true,
-						message: '请填写材料数量',
-						trigger: 'blur'
-					}, {
-						type: 'number',
-						message: '材料数量必须为数字'
-					}],
-					testNum: [{
-							required: true,
-							message: '请填写实验数量',
-							trigger: 'blur'
-						},
-						{
-							type: 'number',
-							message: '实验数量必须为数字'
-						}
-					],
-					qualifiedNum: [{
-							required: true,
-							message: '请填写合格数量',
-							trigger: 'blur'
-						},
-						{
-							type: 'number',
-							message: '合格数量必须为数字'
-						}
-					],
-					qualifiedRate: [{
-							required: true,
-							message: '请填写总合格率',
-							trigger: 'blur'
-						},
-						{
-							type: 'number',
-							message: '合格率必须为数字'
-						}
-					]
-				},
-				examineVisible: false, //检测信息弹窗是否显示
-				areaVisible: false,
-				examineInfo: { //检测信息弹窗信息
-					address: null,
-					addressStr: '',
-					detectionResult: 1,
-					name: '',
-					num: null,
-					projectPart: '',
-					qualifiedNum: null,
-					qualifiedRate: null,
-					reportCode: '',
-					specification: '',
-					takeAddress: '',
-					testDate: formatDate(new Date()),
-					testNum: null
-				},
-				examineTable: [], //检测信息
-				reportTable: [], //试验检测报告
-				factoryTable: [], //出厂信息
-				attachTable: [], //其他附件
-				materialOptions: [],
-				provinceOptions: [],
-				cityOptions: [],
-				countyOptions: [],
-				addressItem: {
-					city: "",
-					cityId: undefined,
-					district: "",
-					districtId: undefined,
-					provice: "",
-					proviceId: undefined
-				},
-				flowNodesUsersData: [],
-				auditUser: {},
-				flowKey: 'zhiliangjiance'
-			};
-		},
-		created() {},
-		components: {
-			upload,
-			attachlist,
-			drafthandle,
-			approveuser,
-			projectinfo,
-			qualityTest: () => import("../qualityTest.vue")
-		},
-		computed: {
-
-		},
-		watch: {
-
-		},
-		mounted() {
-			this.getChildProject();
-			this.getMaterialEnums();
-			this.getProvince();
-		},
-		methods: {
-
-			changeVisible(obj, value) {
-				this.dialogFormVisible = value;
-				obj = obj || {};
-				this.addOrModifyFlag = obj['id'] ? false : true;
-				if (obj['id']) {
-					this.getDetail(obj['id']);
-				} else {
-					this.formData = {
-						deletedFlag: 1,
-						detectionInfo: [],
-						detectionReport: [],
-						factoryInfo: [],
-						otherAttachment: [],
-						draftFlag: 1,
-						fillDate: formatDate(new Date()),
-						inspectionCode: '',
-						buildSection: this.$store.getters.project.id,
-						projectId:this.$store.getters.project['parentid'],
-						remark: '',
-					}
-					this.examineTable = [];
-					this.reportTable = [];
-					this.factoryTable = [];
-					this.attachTable = [];
 				}
-			},
-			getChildProject() {
-				api.getChildProject({
-					projectid: this.$store.getters.project['parentid']
-				}).then((res) => {
-					let options = res.data || [];
-					this.childOptions = convertOptions(options, 'name', 'id');
-				});
-			},
-			changeChild() {
-				api.getCompanyByProjectId({
-					projectid: this.formData.buildSection
-				}).then((res) => {
-					this.baseInfo = res;
-				});
-			},
-			getMaterialEnums() {
-				api.getMaterialEnums().then((res) => {
-					let options = res.data || [];
-					this.materialOptions = convertOptions(options, 'desc', 'desc');
-				});
-			},
-			getProvince() {
-				api.getProvince().then((res) => {
-					let options = res.data || [];
-					this.provinceOptions = convertOptions(options, 'name', 'id');
-				});
-			},
-			changeProvince(value) {
-				this.addressItem.proviceId = value;
-				this.addressItem.provice = this.getLabelByValue(this.provinceOptions, value);
-				this.countyOptions = [];
-				this.cityOptions = [];
-				this.addressItem.cityId = undefined;
-				this.addressItem.districtId = undefined;
-				this.addressItem.city = '';
-				this.addressItem.district = '';
-				api.getCity({
-					provinceId: value
-				}).then((res) => {
-					let options = res.data || [];
-					this.cityOptions = convertOptions(options, 'name', 'id');
-				});
-			},
-			changeCity(value) {
-				this.addressItem.cityId = value;
-				this.addressItem.city = this.getLabelByValue(this.cityOptions, value);
-				this.countyOptions = [];
-				this.addressItem.districtId = undefined;
-				this.addressItem.district = '';
-				api.getDistrict({
-					cityId: value
-				}).then((res) => {
-					let options = res.data || [];
-					this.countyOptions = convertOptions(options, 'name', 'id');
-				});
-			},
-			changeCounty(value) {
-				this.addressItem.districtId = value;
-				this.addressItem.district = this.getLabelByValue(this.countyOptions, value);
-			},
-			getLabelByValue(list, value) {
-				let label = '';
-				list.forEach(item => {
-					if (item['value'] == value) {
-						label = item['label'];
-					}
-				})
-				return label;
-			},
-			addExamine() {
-				this.examineVisible = true;
-			},
-			addExamineTable() {
-				this.$refs['newform'].validate((valid) => {
-					if (valid) {
-						this.examineTable.push(this.examineInfo);
-						this.examineVisible = false;
-					}
-				})
-
-			},
-			getDetail(id) {
-				api.getQualityDetectionDetail({
-					id: id
-				}).then((res) => {
-					let data = res['data'] || {};
-					this.formData = data;
-					this.examineTable = data.detectionInfo || [];
-					this.reportTable = data.detectionReport || [];
-					this.factoryTable = data.factoryInfo || [];
-					this.attachTable = data.otherAttachment || [];
-				});
-			},
-			addOrModify(isdraft) {
-				if (isdraft) {
-					if (diffCompare([this.formData, this.examineTable, this.reportTable, this.factoryTable, this
-							.attachTable
-						], [{
-								deletedFlag: 1,
-								detectionInfo: [],
-								detectionReport: [],
-								factoryInfo: [],
-								otherAttachment: [],
-								draftFlag: 1,
-								fillDate: formatDate(new Date()),
-								inspectionCode: '',
-								buildSection: this.$store.getters.project.id,
-								projectId:this.$store.getters.project['parentid'],
-								remark: '',
-							},
-							[],
-							[],
-							[],
-							[]
-						], ['fillDate'])) {
-						this.$message({
-							type: 'warning',
-							message: '不能提交空白!'
-						});
-						return;
-					}
-					this.formData.detectionInfo = this.examineTable;
-					this.formData.detectionReport = this.reportTable;
-					this.formData.factoryInfo = this.factoryTable;
-					this.formData.otherAttachment = this.attachTable;
-					this.formData.draftFlag = isdraft ? 0 : 1;
-					this.formData.auditUser = this.auditUser;
-					api.addOrUpdateQualityDetection(this.formData).then((res) => {
-						if (res.data) {
-							this.$message({
-								type: 'success',
-								message: '提交成功!'
-							});
-							this.dialogFormVisible = false;
-							this.$emit("query");
-						}
-					});
-
-				} else {
-					this.$refs['ruleForm'].validate((valid) => {
-						if (valid) {
-							this.formData.detectionInfo = this.examineTable;
-							this.formData.detectionReport = this.reportTable;
-							this.formData.factoryInfo = this.factoryTable;
-							this.formData.otherAttachment = this.attachTable;
-							this.formData.auditUser = this.auditUser;
-							this.formData.draftFlag = 1;
-							api.addOrUpdateQualityDetection(this.formData).then((res) => {
-								if (res.data) {
-									this.$message({
-										type: 'success',
-										message: '提交成功!'
-									});
-									this.dialogFormVisible = false;
-									this.$emit("query");
-								}
-							});
-						}
-
-					})
-				}
-
-			},
-			changeArea() {
-				this.countyOptions = [];
-				this.cityOptions = [];
-				this.addressItem.cityId = undefined;
-				this.addressItem.districtId = undefined;
-				this.addressItem.proviceId = undefined;
-				this.addressItem.city = '';
-				this.addressItem.district = '';
-				this.addressItem.provice = '';
-				this.areaVisible = true;
-			},
-			checkArea() {
-				this.examineInfo.address = this.addressItem;
-				this.examineInfo.addressStr = this.addressItem.provice + '/' + this.addressItem.city + '/' + this
-					.addressItem.district;
-				this.areaVisible = false;
-			},
-			deleteExamine(row, index) {
-				this.$confirm('确认是否删除?', '提示', {
-					confirmButtonText: '确定',
-					cancelButtonText: '取消',
-					type: 'warning'
-				}).then(() => {
-					this.examineTable.splice(index, 1);
-				});
-
-			},
-			hideDraft() {
-				this.draftVisible = false;
-			},
-			checkDraft() {
-				this.draftVisible = true;
+				this.examineTable = [];
+				this.reportTable = [];
+				this.factoryTable = [];
+				this.attachTable = [];
 			}
 		},
-	};
+		getChildProject() {
+			api.getChildProject({
+				projectid: this.$store.getters.project['parentid']
+			}).then((res) => {
+				let options = res.data || [];
+				this.childOptions = convertOptions(options, 'name', 'id');
+			});
+		},
+		changeChild() {
+			api.getCompanyByProjectId({
+				projectid: this.formData.buildSection
+			}).then((res) => {
+				this.baseInfo = res;
+			});
+		},
+		getMaterialEnums() {
+			api.getMaterialEnums().then((res) => {
+				let options = res.data || [];
+				this.materialOptions = convertOptions(options, 'desc', 'desc');
+			});
+		},
+		getProvince() {
+			api.getProvince().then((res) => {
+				let options = res.data || [];
+				this.provinceOptions = convertOptions(options, 'name', 'id');
+			});
+		},
+		changeProvince(value) {
+			this.addressItem.proviceId = value;
+			this.addressItem.provice = this.getLabelByValue(this.provinceOptions, value);
+			this.countyOptions = [];
+			this.cityOptions = [];
+			this.addressItem.cityId = undefined;
+			this.addressItem.districtId = undefined;
+			this.addressItem.city = '';
+			this.addressItem.district = '';
+			api.getCity({
+				provinceId: value
+			}).then((res) => {
+				let options = res.data || [];
+				this.cityOptions = convertOptions(options, 'name', 'id');
+			});
+		},
+		changeCity(value) {
+			this.addressItem.cityId = value;
+			this.addressItem.city = this.getLabelByValue(this.cityOptions, value);
+			this.countyOptions = [];
+			this.addressItem.districtId = undefined;
+			this.addressItem.district = '';
+			api.getDistrict({
+				cityId: value
+			}).then((res) => {
+				let options = res.data || [];
+				this.countyOptions = convertOptions(options, 'name', 'id');
+			});
+		},
+		changeCounty(value) {
+			this.addressItem.districtId = value;
+			this.addressItem.district = this.getLabelByValue(this.countyOptions, value);
+		},
+		getLabelByValue(list, value) {
+			let label = '';
+			list.forEach(item => {
+				if (item['value'] == value) {
+					label = item['label'];
+				}
+			})
+			return label;
+		},
+		addExamine() {
+			this.examineVisible = true;
+		},
+		addExamineTable() {
+			this.$refs['newform'].validate((valid) => {
+				if (valid) {
+					this.examineTable.push(this.examineInfo);
+					this.examineVisible = false;
+				}
+			})
+
+		},
+		getDetail(id) {
+			api.getQualityDetectionDetail({
+				id: id
+			}).then((res) => {
+				let data = res['data'] || {};
+				this.formData = data;
+				this.examineTable = data.detectionInfo || [];
+				this.reportTable = data.detectionReport || [];
+				this.factoryTable = data.factoryInfo || [];
+				this.attachTable = data.otherAttachment || [];
+			});
+		},
+		addOrModify(isdraft) {
+			if (isdraft) {
+				if (diffCompare([this.formData, this.examineTable, this.reportTable, this.factoryTable, this
+					.attachTable
+				], [{
+					deletedFlag: 1,
+					detectionInfo: [],
+					detectionReport: [],
+					factoryInfo: [],
+					otherAttachment: [],
+					draftFlag: 1,
+					fillDate: formatDate(new Date()),
+					inspectionCode: '',
+					buildSection: this.$store.getters.project.id,
+					projectId: this.$store.getters.project['parentid'],
+					remark: '',
+				},
+				[],
+				[],
+				[],
+				[]
+				], ['fillDate'])) {
+					this.$message({
+						type: 'warning',
+						message: '不能提交空白!'
+					});
+					return;
+				}
+				this.formData.detectionInfo = this.examineTable;
+				this.formData.detectionReport = this.reportTable;
+				this.formData.factoryInfo = this.factoryTable;
+				this.formData.otherAttachment = this.attachTable;
+				this.formData.draftFlag = isdraft ? 0 : 1;
+				this.formData.auditUser = this.auditUser;
+				api.addOrUpdateQualityDetection(this.formData).then((res) => {
+					if (res.data) {
+						this.$message({
+							type: 'success',
+							message: '提交成功!'
+						});
+						this.dialogFormVisible = false;
+						this.$emit("query");
+					}
+				});
+
+			} else {
+				this.$refs['ruleForm'].validate((valid) => {
+					if (valid) {
+						this.formData.detectionInfo = this.examineTable;
+						this.formData.detectionReport = this.reportTable;
+						this.formData.factoryInfo = this.factoryTable;
+						this.formData.otherAttachment = this.attachTable;
+						this.formData.auditUser = this.auditUser;
+						this.formData.draftFlag = 1;
+						api.addOrUpdateQualityDetection(this.formData).then((res) => {
+							if (res.data) {
+								this.$message({
+									type: 'success',
+									message: '提交成功!'
+								});
+								this.dialogFormVisible = false;
+								this.$emit("query");
+							}
+						});
+					}
+
+				})
+			}
+
+		},
+		changeArea() {
+			this.countyOptions = [];
+			this.cityOptions = [];
+			this.addressItem.cityId = undefined;
+			this.addressItem.districtId = undefined;
+			this.addressItem.proviceId = undefined;
+			this.addressItem.city = '';
+			this.addressItem.district = '';
+			this.addressItem.provice = '';
+			this.areaVisible = true;
+		},
+		checkArea() {
+			this.examineInfo.address = this.addressItem;
+			this.examineInfo.addressStr = this.addressItem.provice + '/' + this.addressItem.city + '/' + this
+				.addressItem.district;
+			this.areaVisible = false;
+		},
+		deleteExamine(row, index) {
+			this.$confirm('确认是否删除?', '提示', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+				type: 'warning'
+			}).then(() => {
+				this.examineTable.splice(index, 1);
+			});
+
+		},
+		hideDraft() {
+			this.draftVisible = false;
+		},
+		checkDraft() {
+			this.draftVisible = true;
+		}
+	},
+};
 </script>
 
 <style scoped lang="scss">
-	@import "../../../../assets/css/dialog.scss"
+@import "../../../../assets/css/dialog.scss"
 </style>

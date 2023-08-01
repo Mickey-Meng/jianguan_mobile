@@ -28,7 +28,7 @@
             </div>
             <div class="content">
               <span class="name">填报时间：</span>
-              <span class="value">{{ item.updatetime ? formatISO8601Time(item.updatetime) : '' }}</span>
+              <span class="value">{{ item.stime ? formatISO8601Time(item.stime) : '' }}</span>
             </div>
             <div class="content">
               <span class="name">填报信息：</span>

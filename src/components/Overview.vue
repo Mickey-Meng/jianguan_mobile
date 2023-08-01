@@ -3,7 +3,7 @@
     <div class="content-chart">
       <van-row class="content" v-show="showMiddleData">
         <van-col span="6" v-for="(item, index) in data" :key="index">
-          <div class="value" :style="{ color: item.color }">{{ isNotG235() ? 0 : item.value }}</div>
+          <div class="value" :style="{ color: item.color }">{{ item.value }}</div>
           <div class="name">{{ item.name }}</div>
         </van-col>
       </van-row>
@@ -95,41 +95,25 @@ export default {
       this.projectType = this.projectTypes[0].value
     },
     getCurrentFinishConponent(currentProject) {
-      getFinishConponent({ type: currentProject.value }).then(data => {
+      getFinishConponent({ type: currentProject.value, projectId: this.$store.state.currentBiaoDuan.id }).then(data => {
         this.leftData = [
           {
-            value: this.isNotG235()
-              ? 0
-              : data.act.count === 0
-              ? 0
-              : ((data.act.finish / data.act.count) * 100).toFixed(2),
+            value: ((data.act.finish / data.act.count) * 100).toFixed(2),
             name: '已完成'
           },
           {
-            value: this.isNotG235()
-              ? 0
-              : data.act.count === 0
-              ? 0
-              : (((data.act.count - data.act.finish) / data.act.count) * 100).toFixed(2),
+            value: (((data.act.count - data.act.finish) / data.act.count) * 100).toFixed(2),
             name: '未完成'
           }
         ]
 
         this.rightData = [
           {
-            value: this.isNotG235()
-              ? 0
-              : data.plan.count === 0
-              ? 0
-              : ((data.plan.finish / data.plan.count) * 100).toFixed(2),
+            value: ((data.plan.finish / data.plan.count) * 100).toFixed(2),
             name: '已完成'
           },
           {
-            value: this.isNotG235()
-              ? 0
-              : data.plan.count === 0
-              ? 0
-              : (((data.plan.count - data.plan.finish) / data.plan.count) * 100).toFixed(2),
+            value: (((data.plan.count - data.plan.finish) / data.plan.count) * 100).toFixed(2),
             name: '未完成'
           }
         ]

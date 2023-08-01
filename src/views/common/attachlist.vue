@@ -109,7 +109,7 @@
 					uploadTime: formatDateTime(data['uploadTime']),
 					fileName: data['fileName'],
 					fileId: data['fileId'],
-					creatorName: this.$store.state.userinfo.name
+					creatorName: this.$store.state.userinfo.nickName
 				})
 			},
 			importFile(params) {

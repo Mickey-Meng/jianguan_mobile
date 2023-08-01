@@ -38,7 +38,7 @@
 										<div class="block-item">
 											<div class="block-item-label">劳务分包合同<i class="require-icon"></i></div>
 											<div class="block-item-value">
-												{{formData.laborContractId}}
+												{{formData.laborContractCode}}
 											</div>
 										</div>
 									</div>
@@ -182,7 +182,7 @@
 					deletedFlag: 1,
 					draftFlag: 1,
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2,
+					projectId: this.$store.getters.currentBiaoDuan.id || 2,
 					laborContractId: null,
 					num: null,
 					type: 0

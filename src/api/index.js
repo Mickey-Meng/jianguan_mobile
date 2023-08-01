@@ -3,6 +3,7 @@ const api = {
   userinfo: '/user/userinfo',
   username: '/user/name',
   getVideoToken: '/user/viewToken/new',
+  getMonitoringByProjectId: "/system/jg/project/monitor",//通过项目查询监控列表
   // getProjectList: '/projects/getProjects',
   getProjectList: '/projects/getAppProjectByUser', //通过用户查询所拥有的项目权限(目前只支持用户所拥有的工区权限查询, 分两级，同时查询项目以及标段)
 
@@ -214,6 +215,7 @@ const api = {
   listHistoricProcessInstance: '/flow/flowOperation/listHistoricProcessInstance', //历史任务
   submitUserTask: '/admin/flow/flowStaticPage/submitUserTask',
   rejectRuntimeTask: '/admin/flow/flowOperation/rejectRuntimeTask', //驳回
+  rejectToStartUserTask: "/admin/flow/flowOperation/rejectToStartUserTask",
   viewTaskUserInfo: '/admin/flow/flowOperation/viewTaskUserInfo', //审批人
   viewRuntimeTaskInfo: '/admin/flow/flowOperation/viewRuntimeTaskInfo', //查询流程按钮
   viewHighlightFlowData: '/admin/flow/flowOperation/viewHighlightFlowData', //高亮流程图

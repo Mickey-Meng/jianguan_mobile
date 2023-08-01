@@ -12,47 +12,8 @@
 					<div class="form-block-title">
 						<div class="title-bar"></div><strong>基本信息</strong>
 					</div>
-					<div class="block-line">
-						<div class="block-item">
-							<div class="block-item-label">项目名称</div>
-							<div class="block-item-value">
-								{{baseInfo.buildSectionName}}
-							</div>
-						</div>
-					</div>
-					<div class="block-line">
-						<div class="block-item">
-							<div class="block-item-label">合同号</div>
-							<div class="block-item-value">
-								{{baseInfo.contractCode}}
-							</div>
-						</div>
-					</div>
-					<div class="block-line">
-						<div class="block-item">
-							<div class="block-item-label">施工单位</div>
-							<div class="block-item-value">
-								{{baseInfo.buildCompany}}
-							</div>
-						</div>
-					</div>
-					<div class="block-line">
-						<div class="block-item">
-							<div class="block-item-label">监理单位</div>
-							<div class="block-item-value">
-								{{baseInfo.supervisionUnit}}
-							</div>
-						</div>
-					</div>
-					<div class="block-line">
-
-						<div class="block-item">
-							<div class="block-item-label">工程编号</div>
-							<div class="block-item-value">
-								{{formData.projectCode}}
-							</div>
-						</div>
-					</div>
+					<projectinfo></projectinfo>
+					
 				</div>
 				<div class="form-block">
 					<div class="form-block-title">
@@ -119,6 +80,7 @@
 		getQueryVariable
 	} from "@/utils/format.js";
 	import attachlist from "@/views/common/attachlist"
+	import projectinfo from "@/views/common/projectinfo"
 	
 	export default {
 		props: ['detailRow'],
@@ -149,7 +111,9 @@
 		},
 		created() {},
 		components: {
-			attachlist
+			attachlist,
+			
+			projectinfo
 		},
 		computed: {},
 		mounted() {

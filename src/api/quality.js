@@ -60,6 +60,7 @@ const request = function(rParams) {
         if (userinfoStr) {
           let userinfo = JSON.parse(userinfoStr)
           options.headers['token'] = userinfo.token
+          options.headers['Authorization'] = 'Bearer ' + userinfo.token; // 让每个请求携带自定义token 请根据实际情况自行修改
         }
       }
       mui.ajax(options)
@@ -508,7 +509,7 @@ export const getProjectOpenList = data => {
     method: 'post',
     data: data
   })
-}
+} 
 /**
  * 分项开工申请
  */
@@ -1147,6 +1148,14 @@ export const rejectRuntimeTask = data => {
     data: data
   })
 }
+export const rejectToStartUserTask = data => {
+  return request({
+    url: api.rejectToStartUserTask,
+    // url: api.stopProcessInstance,
+    method: "post",
+    data: data
+  });
+};
 /**
  * 获取流程列表
  */

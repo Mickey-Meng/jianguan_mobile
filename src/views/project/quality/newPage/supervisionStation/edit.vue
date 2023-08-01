@@ -113,10 +113,16 @@
 										<div class="block-item-label">异常情况<i class="require-icon"></i></div>
 										<div class="block-item-value">
 											<el-form-item prop="exceptionCondition">
-												<el-radio v-model="formData.exceptionCondition" label="存在">存在
+												<!-- <el-radio v-model="formData.exceptionCondition" label="存在">存在
 												</el-radio>
+												<div></div>
 												<el-radio v-model="formData.exceptionCondition" label="不存在">不存在
-												</el-radio>
+												</el-radio> -->
+												
+												<van-radio-group v-model="formData.exceptionCondition" style="display: flex;">
+													<van-radio name="存在">存在</van-radio>
+													<van-radio name="不存在">不存在</van-radio>
+												</van-radio-group>
 											</el-form-item>
 										</div>
 									</div>
@@ -505,57 +511,81 @@
 											<el-row>
 												<el-col :span="8">
 													<el-form-item label="施工员在岗情况">
-														<el-radio v-model="sideInfo.a02" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a02" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a02" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="8">
 													<el-form-item label="质检员在岗情况">
-														<el-radio v-model="sideInfo.a03" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a03" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a03" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="8">
 													<el-form-item label="安全员在岗情况">
-														<el-radio v-model="sideInfo.a04" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a04" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a04" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工作业人员满足施工需要情况" label-width="220px">
-														<el-radio v-model="sideInfo.a05" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a05" label="否">否</el-radio>
 													</el-form-item>
+													
+													
+													<van-radio-group v-model="sideInfo.a05" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="特殊作业人员持证上岗情况" label-width="220px">
-														<el-radio v-model="sideInfo.a06" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a06" label="否">否</el-radio>
 													</el-form-item>
+													
+													
+													<van-radio-group v-model="sideInfo.a06" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工机械满足施工需要情况" label-width="220px">
-														<el-radio v-model="sideInfo.a07" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a07" label="否">否</el-radio>
 													</el-form-item>
+													
+													
+													<van-radio-group v-model="sideInfo.a07" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工材料符合设计和规范要求" label-width="220px">
-														<el-radio v-model="sideInfo.a08" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a08" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a08" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
@@ -576,44 +606,62 @@
 											</el-row>
 											<el-row>
 												<el-form-item label="施工工艺按审批施工方案实施">
-													<el-radio v-model="sideInfo.a11" label="是">是</el-radio>
-													<el-radio v-model="sideInfo.a11" label="否">否</el-radio>
 												</el-form-item>
+													
+												<van-radio-group v-model="sideInfo.a11" style="display: flex;">
+													<van-radio name="是">是</van-radio>
+													<van-radio name="否">否</van-radio>
+												</van-radio-group>
 											</el-row>
 											<el-row>
 												<el-form-item label="钢筋笼安放所采用的施工机械设备是否满足要求">
-													<el-radio v-model="sideInfo.a12" label="是">是</el-radio>
-													<el-radio v-model="sideInfo.a12" label="否">否</el-radio>
 												</el-form-item>
+													
+												<van-radio-group v-model="sideInfo.a12" style="display: flex;">
+													<van-radio name="是">是</van-radio>
+													<van-radio name="否">否</van-radio>
+												</van-radio-group>
 											</el-row>
 											<el-row>
 												<el-form-item label="钢筋笼吊装及安放工艺是否符合批准的施工方案">
-													<el-radio v-model="sideInfo.a13" label="是">是</el-radio>
-													<el-radio v-model="sideInfo.a13" label="否">否</el-radio>
 												</el-form-item>
+													
+												<van-radio-group v-model="sideInfo.a13" style="display: flex;">
+													<van-radio name="是">是</van-radio>
+													<van-radio name="否">否</van-radio>
+												</van-radio-group>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工现场质量措施落实情况">
-														<el-radio v-model="sideInfo.a14" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a14" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a14" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="安全措施落实情况">
-														<el-radio v-model="sideInfo.a15" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a15" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a15" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="环保措施落实情况">
-														<el-radio v-model="sideInfo.a16" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a16" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a16" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row style="font-size: 16px;color: #236fa1;font-weight: 600;">主要数据记录
@@ -751,57 +799,78 @@
 											<el-row>
 												<el-col :span="8">
 													<el-form-item label="施工员在岗情况">
-														<el-radio v-model="sideInfo.a80" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a80" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a80" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="8">
 													<el-form-item label="质检员在岗情况">
-														<el-radio v-model="sideInfo.a81" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a81" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a82" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="8">
 													<el-form-item label="安全员在岗情况">
-														<el-radio v-model="sideInfo.a82" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a82" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a82" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="16">
 													<el-form-item label="施工作业人员满足施工需要情况">
-														<el-radio v-model="sideInfo.a83" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a83" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a83" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="12">
 													<el-form-item label="业人员持证上岗情况">
-														<el-radio v-model="sideInfo.a84" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a84" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a84" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="16">
 													<el-form-item label="施工机械满足施工需要情况">
-														<el-radio v-model="sideInfo.a85" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a85" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a85" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="16">
 													<el-form-item label="施工材料符合设计和规范要求">
-														<el-radio v-model="sideInfo.a86" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a86" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a86" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
@@ -822,46 +891,64 @@
 											</el-row>
 												<el-col :span="16">
 													<el-form-item label="施工工艺按审批施工方案实施">
-														<el-radio v-model="sideInfo.a89" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a89" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a89" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											<el-row>
 											</el-row>
 											<el-row>
 												<el-form-item label="钢筋笼安放所采用的施工机械设备是否满足要求">
-													<el-radio v-model="sideInfo.a90" label="是">是</el-radio>
-													<el-radio v-model="sideInfo.a90" label="否">否</el-radio>
 												</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a90" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 											</el-row>
 											<el-row>
 												<el-form-item label="钢筋笼吊装及安放工艺是否符合批准的施工方案">
-													<el-radio v-model="sideInfo.a91" label="是">是</el-radio>
-													<el-radio v-model="sideInfo.a91" label="否">否</el-radio>
 												</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a91" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 											</el-row>
 											<el-row>
 												<el-col :span="16">
 													<el-form-item label="施工现场质量措施落实情况">
-														<el-radio v-model="sideInfo.a92" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a92" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a92" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="12">
 													<el-form-item label="安全措施落实情况">
-														<el-radio v-model="sideInfo.a93" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a93" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a93" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="12">
 													<el-form-item label="环保措施落实情况">
-														<el-radio v-model="sideInfo.a94" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a94" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a94" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
@@ -1396,49 +1483,70 @@
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工员在岗情况">
-														<el-radio v-model="sideInfo.a162" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a162" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a162" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 												<el-col :span="24">
 													<el-form-item label="质检员在岗情况">
-														<el-radio v-model="sideInfo.a163" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a163" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a163" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 												<el-col :span="24">
 													<el-form-item label="安全员在岗情况">
-														<el-radio v-model="sideInfo.a164" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a164" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a164" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工作业人员满足施工需要情况">
-														<el-radio v-model="sideInfo.a165" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a165" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a165" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 												<el-col :span="24">
 													<el-form-item label="特殊作业人员持证上岗情况">
-														<el-radio v-model="sideInfo.a166" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a166" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a166" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工机械满足施工需要情况">
-														<el-radio v-model="sideInfo.a167" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a167" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a167" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 												<el-col :span="24">
 													<el-form-item label="施工材料符合设计和规范要求">
-														<el-radio v-model="sideInfo.a168" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a168" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a168" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
@@ -1459,9 +1567,12 @@
 											</el-row>
 											<el-row>
 												<el-form-item label="施工工艺">
-													<el-radio v-model="sideInfo.a171" label="是">是</el-radio>
-													<el-radio v-model="sideInfo.a171" label="否">否</el-radio>
 												</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a171" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 											</el-row>
 											
 											<el-row style="font-size: 16px;color: #236fa1;font-weight: 600;">主要数据记录
@@ -1507,49 +1618,70 @@
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工员在岗情况">
-														<el-radio v-model="sideInfo.a176" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a176" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a176" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 												<el-col :span="24">
 													<el-form-item label="质检员在岗情况">
-														<el-radio v-model="sideInfo.a177" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a177" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a177" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 												<el-col :span="24">
 													<el-form-item label="安全员在岗情况">
-														<el-radio v-model="sideInfo.a178" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a178" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a178" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工作业人员满足施工需要情况">
-														<el-radio v-model="sideInfo.a179" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a179" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a179" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 												<el-col :span="24">
 													<el-form-item label="特殊作业人员持证上岗情况">
-														<el-radio v-model="sideInfo.a180" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a180" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a180" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
 												<el-col :span="24">
 													<el-form-item label="施工机械满足施工需要情况">
-														<el-radio v-model="sideInfo.a181" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a181" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a181" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 												<el-col :span="24">
 													<el-form-item label="施工材料符合设计和规范要求">
-														<el-radio v-model="sideInfo.a182" label="是">是</el-radio>
-														<el-radio v-model="sideInfo.a182" label="否">否</el-radio>
 													</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a182" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 												</el-col>
 											</el-row>
 											<el-row>
@@ -1570,9 +1702,12 @@
 											</el-row>
 											<el-row>
 												<el-form-item label="施工工艺">
-													<el-radio v-model="sideInfo.a185" label="是">是</el-radio>
-													<el-radio v-model="sideInfo.a185" label="否">否</el-radio>
 												</el-form-item>
+													
+													<van-radio-group v-model="sideInfo.a185" style="display: flex;">
+														<van-radio name="是">是</van-radio>
+														<van-radio name="否">否</van-radio>
+													</van-radio-group>
 											</el-row>
 											
 											<el-row style="font-size: 16px;color: #236fa1;font-weight: 600;">主要数据记录
@@ -1752,7 +1887,7 @@
 					"exceptionCondition": "",
 					"problemDealCondition": "",
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2,
+					projectId: this.$store.getters.currentBiaoDuan.id || 2,
 					"projectPartDesc": "",
 					"projectPartId": null,
 					"projectPartStr": '',
@@ -1882,7 +2017,7 @@
 						"exceptionCondition": "",
 						"problemDealCondition": "",
 						buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-						projectId: this.$store.getters.curProject.id || 2,
+						projectId: this.$store.getters.currentBiaoDuan.id || 2,
 						"projectPartDesc": "",
 						"projectPartId": null,
 						"projectPartStr": '',
@@ -1918,7 +2053,7 @@
 							"exceptionCondition": "",
 							"problemDealCondition": "",
 							buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-							projectId: this.$store.getters.curProject.id || 2,
+							projectId: this.$store.getters.currentBiaoDuan.id || 2,
 							"projectPartDesc": "",
 							"projectPartId": null,
 							"projectPartStr": '',

@@ -32,14 +32,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="block-line">
+		<!-- <div class="block-line">
 			<div class="block-item">
 				<div class="block-item-label">标段</div>
 				<div class="block-item-value">
 					{{baseInfo.buildSectionName}}
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </template>
 
@@ -74,18 +74,18 @@
 		methods: {
 			getProjectInfoById() {
 					// buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					// projectId: this.$store.getters.curProject.id || 2
+					// projectId: this.$store.getters.currentBiaoDuan.id || 2
 				this.baseInfo.buildSectionName=this.currentBiaoDuan.name;
 				this.baseInfo.contractCode=this.currentBiaoDuan.contractnum;
-				api.getProjectInfoById({
-					projectid: this.curProject.id || 2
+				api.getProjectDetail({
+					projectId: this.currentBiaoDuan.id || 2
 				}).then((res) => {
 					let data = res || {};
-					this.baseInfo['projectName'] = data['project'] ? data['project']['name'] : '';
-					let list = data['companys'] || [];
-					let info = createProjectInfo(list);
-					this.baseInfo['buildCompany'] = info['buildCompany'];
-					this.baseInfo['supervisionUnit'] = info['supervisionUnit'];
+					this.baseInfo['projectName'] = data['projectName'];
+					// let list = data['companys'] || [];
+					// let info = createProjectInfo(list);
+					this.baseInfo['buildCompany'] = data['constructdpt'];
+					this.baseInfo['supervisionUnit'] = data['supervisordpt'];
 				});
 			},
 		}

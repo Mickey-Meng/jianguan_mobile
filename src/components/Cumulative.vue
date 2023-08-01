@@ -103,7 +103,9 @@ export default {
       compRateOptions: null,
       yAxisCompRateData: [],
       series0CompRateData: [100, 100, 100],
-      series1CompRateData: [0, 0, 0]
+      series1CompRateData: [0, 0, 0],
+
+      danweigongchengPrjCode: []
     }
   },
   mounted() {
@@ -154,7 +156,7 @@ export default {
       for (let i in data) {
         let num = []
         let lists = data[i]
-        lists.reverse()
+        // lists.reverse()
         if (lists && lists.length > 0) {
           lists.forEach(result => {
             num.push(result.number)
@@ -181,6 +183,7 @@ export default {
       this.drawChart()
     },
     updateCountChart(data) {
+      const that = this;
       let option = {
         grid: {
           left: '3%',
@@ -322,16 +325,19 @@ export default {
           let x = []
           let totalNum = []
           let lists = item.list
+          const _danweigongchengPrjCode = [];
           if (lists && lists.length > 0) {
             lists.forEach(result => {
               let { projectname, finish, total, projectcode } = result
               let num = finish || 0
               let to = total || 0
               totalNum.push(to)
-              x.push(projectname)
+              x.push(projectname) /////
+              _danweigongchengPrjCode.push(projectcode) /////
               m.data.push(num)
             })
           }
+          that.danweigongchengPrjCode = _danweigongchengPrjCode; ////////////////
           if (lists.length <= 4) {
             obj.dataZoom[0].end = 100
           }
@@ -397,7 +403,7 @@ export default {
         this.$nextTick(() => {
           let that = this
           this.$refs['countChart']?.myChart?.on('click', function(params) {
-            let code = params.name.substring(params.name.lastIndexOf('-') + 1)
+            let code = that.danweigongchengPrjCode[params.dataIndex] || params.name.substring(params.name.lastIndexOf('-') + 1) /////////
             that.initCompRateChart(code)
           })
         })

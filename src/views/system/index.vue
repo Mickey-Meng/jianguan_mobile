@@ -54,7 +54,17 @@ export default {
         .then(() => {
           localStorage.clear()
           this.$store.state.userinfo = {}
-          this.$router.push({ path: '/' })
+
+          const rootInstance = this.$root
+
+          // 销毁根组件实例，清除所有缓存的组件
+          rootInstance.$destroy()
+
+          // 执行其他退出登录的逻辑，例如重置用户状态等
+
+          // 跳转到登录页面或其他需要的页面
+          this.$router.go('/')
+          // window.location.reload()
         })
     }
   }

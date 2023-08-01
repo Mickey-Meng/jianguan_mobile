@@ -313,7 +313,7 @@
 <script>
 	import * as api from "@/api/quality";
 	import * as userapi from "@/api/project";
-	
+
 	import {
 		convertOptions,
 		getQueryVariable,
@@ -391,7 +391,7 @@
 					deletedFlag: 1,
 					draftFlag: 1,
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2,
+					projectId: this.$store.getters.currentBiaoDuan.id || 2,
 				},
 				taskInfo: {}
 			};
@@ -429,7 +429,7 @@
 				this.buildUserOptions=[];
 				this.checkUserOptions=[];
 				this.liveUserOptions=[];
-				
+
 				userapi.getUserByRoleId({projectId: this.$store.getters.currentBiaoDuan.id || 3,roleid: 70}).then(res=>{
 					let data=res||[];
 					data.forEach(item=>{
@@ -481,9 +481,9 @@
 			getDetail(id) {
 				api.getSubitemOpenDeatil(id).then((res) => {
 					let data = res['data'] || {};
-					data.buildUserName=getOptionsLabel(this.buildUserOptions,data.buildUser)
-					data.liveUserName=getOptionsLabel(this.liveUserOptions,data.liveUser)
-					data.checkUserName=getOptionsLabel(this.checkUserOptions,data.checkUser)
+					// data.buildUserName=getOptionsLabel(this.buildUserOptions,data.buildUser)
+					// data.liveUserName=getOptionsLabel(this.liveUserOptions,data.liveUser)
+					// data.checkUserName=getOptionsLabel(this.checkUserOptions,data.checkUser)
 					this.formData = data;
 				});
 				api.getFlowAndTaskInfo({

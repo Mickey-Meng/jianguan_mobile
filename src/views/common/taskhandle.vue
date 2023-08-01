@@ -134,7 +134,7 @@ export default {
           entryKey: this.taskInfo['entryKey'],
           flowKey: this.taskInfo['flowKey'],
 			buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-			projectId: this.$store.getters.curProject.id || 2
+			projectId: this.$store.getters.currentBiaoDuan.parentid || 2
         //   buildSection: this.$store.getters.project.id,
         //   projectId: this.$store.getters.project['parentid'] || 2
         })
@@ -233,8 +233,7 @@ export default {
       }
       // 驳回到起点
       if (operation.type === this.SysFlowTaskOperationType.REJECT_TO_START) {
-        api
-          .rejectToStartUserTask({
+        api.rejectToStartUserTask({
             processInstanceId: this.taskInfo.processInstanceId,
             taskId: this.taskInfo.taskId,
             comment: this.formData.comment

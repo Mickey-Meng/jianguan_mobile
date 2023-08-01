@@ -27,13 +27,10 @@
 			</div>
 			<el-button type="primary" @click="query">搜索</el-button>
 		</el-header> -->
-    <van-list @load="query" :style="{ height: scrollerHeight }" v-model="loading" :finished="finished" finished-text="没有更多了">
-      <van-swipe-cell
-        class="list"
-        v-for="(item, index) in tableData"
-        :key="index"
-        :class="'item ' + (index === tableData.length - 1 ? 'last' : '')"
-      >
+    <van-list @load="query" :style="{ height: scrollerHeight }" v-model="loading" :finished="finished"
+      finished-text="没有更多了">
+      <van-swipe-cell class="list" v-for="(item, index) in tableData" :key="index"
+        :class="'item ' + (index === tableData.length - 1 ? 'last' : '')">
         <div class="item" style="" @click="gotoHandle(item)">
           <div class="block">
             <span class="block-name">流程名称：</span>
@@ -113,10 +110,10 @@ export default {
   },
   methods: {
     query() {
-        this.queryData.pageParam.pageNum++;
+      this.queryData.pageParam.pageNum++;
       api.listHandleTask(this.queryData).then(res => {
         this.allData = res.data || {}
-        this.tableData = [...this.tableData,...this.allData.list || []]
+        this.tableData = [...this.tableData, ...this.allData.list || []]
         this.queryData.pageParam.pageNum = res.data.pageNum
         this.queryData.pageParam.totalPage = res.data.total
         this.queryData.pageParam.pageSize = res.data.pageSize
@@ -137,6 +134,7 @@ export default {
       row['taskFormKey'] = typeof row['taskFormKey'] == 'string' ? JSON.parse(row['taskFormKey']) : row['taskFormKey']
       let key = row['taskFormKey']['routerName']
       let router = this.detailRouters.find(e => e.code.indexOf(key) !== -1)
+      console.log(router)
       let hiddenEdit = [
         'sgdwhtrybs',
         'jldwhtrybs',
@@ -198,6 +196,7 @@ export default {
   height: 100%;
   width: calc(100% + 1px);
   overflow-y: auto;
+
   .list {
     .item {
       padding: 10px;
@@ -206,6 +205,7 @@ export default {
       margin: 5px;
       box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
     }
+
     .van-button {
       height: 100%;
       border-radius: 5px;

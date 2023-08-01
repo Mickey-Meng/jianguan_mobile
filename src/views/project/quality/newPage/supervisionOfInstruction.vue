@@ -85,7 +85,7 @@
 					totalPage: 1,
 					pageSize: 10,
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2,
+					projectId: this.$store.getters.currentBiaoDuan.id || 2,
 				},
 				currentPattern: 0, //0查看，1新增，2修改
 				editRow: null,

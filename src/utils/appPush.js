@@ -16,8 +16,9 @@ const getPushCid = () => {
       resolve('')
     }
     judgePlus().then(() => {
-      let pinf = plus.push.getClientInfo();
-      let cid = pinf.clientid;//客户端标识
+      // let pinf = plus.push.getClientInfo();
+      // let cid = pinf.clientid;//客户端标识
+      const cid = ''
       resolve(cid)
     })
   })

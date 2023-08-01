@@ -12,12 +12,12 @@
 				<van-swipe-cell class="list" v-for="(item, index) in tableData" :key="index" :class="'item ' + (index === tableData.length - 1 ? 'last' : '')">
 					<div class="item" style="" @click="viewDetail(item)">
 						<div class="block">
-							<div class="block-name">项目名称：</div>
+							<div class="block-name">项目名称1：</div>
 							<div class="block-value">{{ item.projectName }}</div>
 						</div>
 						<div class="block">
 							<div class="block-name">施工单位：</div>
-							<div class="block-value">{{ item.buildUnit }}</div>
+							<div class="block-value">{{ item.constructdpts }}</div>
 						</div>
 						<div class="block">
 							<div class="block-name">单位、分部工程：</div>
@@ -28,12 +28,13 @@
 							<div class="block-value">{{ item.subProject }}</div>
 						</div>
 						<div class="block">
-							<div class="block-name">隐蔽工程项目：</div>
+							<div class="block-name">隐蔽工程项1目：</div>
 							<div class="block-value">{{ item.hiddenProject }}</div>
 						</div>
-						<div v-if="item.stime" class="status">
-							{{ item.statusStr }}
-						</div>
+            <div class="status">
+              {{ item.statusStr }} 
+            </div>
+
 						<!-- <div class="operate center-in-vertical">
 							<img v-if="item.checkresult === 3" :src="require(`assets/image/待审核.png`)" />
 							<img v-if="item.checkresult === 1" :src="require(`assets/image/已通过.png`)" />
@@ -44,8 +45,8 @@
 							<div style="float:right;">{{item.createTime}}</div>
 						</div>
 					</div>
-					
-					
+
+
 					<!-- <template #right>
 						<van-button square type="primary" text="详情" @click="viewDetail(item)"/>
 						<van-button square type="primary" text="编辑" />
@@ -88,7 +89,7 @@
 					totalPage: 1,
 					pageSize: 10,
 					buildSection: this.$store.getters.currentBiaoDuan.id || 3,
-					projectId: this.$store.getters.curProject.id || 2
+					projectId: this.$store.getters.currentBiaoDuan.id || 2
 				},
 				editRow: null,
 				detailRow: null
@@ -116,7 +117,7 @@
 					this.queryData.pageNum = res.data.pageNum + 1;
 					this.queryData.totalPage = res.data.total;
 					this.queryData.pageSize = res.data.pageSize;
-					
+
 					// 加载状态结束
 					this.loading = false;
 					// 数据全部加载完成
@@ -128,13 +129,13 @@
 			formateTableData(list) {
 				list = list || [];
 				list.forEach(item => {
-					item['projectName'] = '235国道杭州至诸暨公路萧山河上至诸暨安华段改建工程';
+					// item['projectName'] = '235国道杭州至诸暨公路萧山河上至诸暨安华段改建工程';
 					item['buildUnit'] = '中交上海航道局有限公司、中国交通建设股份有限公司、浙江诸安建设集团有限公司、浙江省交通规划设计研究院有限公司';
 					item['contractCode'] = '235SJSG01';
 					item['supervisorUnit'] = '浙江交科公路水运工程监理有限公司';
 					item['buildSectionId'] = '';
 					item['supervisorSection'] = '';
-					item['statusStr'] = '';
+					// item['statusStr'] = '';
 				})
 				return list;
 			},
